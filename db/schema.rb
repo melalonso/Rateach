@@ -11,7 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422124026) do
+ActiveRecord::Schema.define(version: 20150514062955) do
+
+  create_table "careers", force: true do |t|
+    t.integer  "faculty_id"
+    t.integer  "university_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "faculties", force: true do |t|
+    t.integer  "university_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "faculties", ["university_id"], name: "faculties_university_id_fk", using: :btree
+
+  create_table "teachers", force: true do |t|
+    t.string   "name"
+    t.string   "last_name"
+    t.float    "sum_eval",   limit: 24
+    t.integer  "cant_eval"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "universities", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "logo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -24,15 +58,17 @@ ActiveRecord::Schema.define(version: 20150422124026) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "name"
+    t.string   "uid"
+    t.string   "provider"
+    t.boolean  "manager",                default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.boolean  "manager",                default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  add_foreign_key "faculties", "universities", name: "faculties_university_id_fk"
 
 end

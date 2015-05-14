@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rubric1: 1
+  rubric2: 1
+  rubric3: 1
+  rubric4: 1
+  rubric5: 1
+  rubric6: 1
+  rubric7: 1
+  rubric8: 1
+  rubric9: 1
+  rubric10: 1
+
+two:
+  rubric1: 1
+  rubric2: 1
+  rubric3: 1
+  rubric4: 1
+  rubric5: 1
+  rubric6: 1
+  rubric7: 1
+  rubric8: 1
+  rubric9: 1
+  rubric10: 1
