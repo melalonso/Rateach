@@ -1,0 +1,43 @@
+- @posts.each do |post|
+  %li.until-here
+    %div.row.container
+      - if current_user.manager==true
+        %div.col-md-3
+          %img.pull-left.preview{:src => asset_path("image.png"), :alt=> 'Imagen de la noticia'}
+
+      %div.col-md-9
+        .panel.panel-default{:class => "panel-#{@color}"}
+          .panel-heading 
+            %h3= post.title
+          .panel-body
+
+            %ul.footer-info
+              %li 
+                Fecha
+                = post.date
+              %li
+                Usuario 
+                = post.userId
+              %li
+                Categoria
+                = post.category
+            %p= post.description
+            %a{:href=>post.link} Seguir Link
+            - if post.status=='rejected'
+              %hr
+              %h4 Justificacion:
+              %p= post.justification
+
+          - if current_user.manager==true
+            %ul.manage-post-buttons
+              %li
+                %a.manage-post#reje
+                  %i.fa.fa-times.fa-2x
+              %li
+                %a.manage-post#accepted{:value => post.id}
+                  %i.fa.fa-check.fa-2x
+          %div#justification{:style=>'display:none'}
+            %textarea#justi-textarea{ :rows=>6 , :cols=>100, :class=>"form-control"}
+            %center
+              %button.btn.btn-default#rejected{:value => post.id} Rechazar
+

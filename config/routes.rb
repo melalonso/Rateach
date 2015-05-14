@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users , :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
+  resources :posts
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  
+  devise_scope :user do
+    get 'users/post_status' , to: 'users/registrations#post_status',:as => "user_posts_status"
+  end
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#index'
+  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

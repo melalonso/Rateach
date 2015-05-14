@@ -49,7 +49,7 @@ gem 'haml-rails'
 gem 'devise'
 
 #For omniauth
-#gem 'omniauth'
+gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 
