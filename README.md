@@ -1,2 +1,2 @@
-# Portal Noticias
-Rails application proyect for Web development aplicaction class
+# Rateach
+Rate a teacher form your University
