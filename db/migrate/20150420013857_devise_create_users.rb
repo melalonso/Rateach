@@ -19,6 +19,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
+      t.string :name
+      t.string :uid
+      t.string :provider
+      t.boolean :manager, default: false
+
 
       t.timestamps
     end
