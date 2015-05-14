@@ -1,2 +1,2 @@
-# EvaluadorWeb
-# Evaluador #3 Tarea programada Desarrollo de aplicaciones Web
+# Portal Noticias
+Rails application proyect for Web development aplicaction class
