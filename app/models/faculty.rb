@@ -1,5 +1,5 @@
 class Faculty < ActiveRecord::Base
-  has_many :careers, dependent: :destroy
   belongs_to :university
+  has_many :careers , dependent: :destroy
   #validates :university, presence: true
 end
