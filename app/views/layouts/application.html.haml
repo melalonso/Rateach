@@ -47,16 +47,24 @@
                 %a{:href=>edit_user_registration_path}
                   %i.fa.fa-lg.fa-user{:title => "Perfil"}
                   =current_user.name
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-pencil.fa-lg{:title => "Agregar Profesor"}
+                  Profesor
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-pencil.fa-lg{:title => "Agregar Curso"}
+                  Curso
+              %li
+                =link_to destroy_user_session_path, method: :delete do
+                  %i.fa.fa-power-off.fa-lg{:title => "Salir"}
+                  Salir
+            - else
+              %li
+                = link_to new_user_session_path do
+                  %i.fa.fa-sign-in.fa-lg
 
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-pencil.fa-lg{:title => "Agregar Profesor"}
-            %li
-              = link_to new_user_session_path do
-                %i.fa.fa-sign-in.fa-lg
-            %li
-              =link_to destroy_user_session_path, method: :delete do
-                %i.fa.fa-power-off.fa-lg{:title => "Salir"}
+
     / /.navbar-collapse
 
 

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @teacher.name
+%p
+  %b Last name:
+  = @teacher.last_name
+%p
+  %b Sum eval:
+  = @teacher.sum_eval
+%p
+  %b Cant eval:
+  = @teacher.cant_eval
+
+= link_to 'Edit', edit_teacher_path(@teacher)
+\|
+= link_to 'Back', teachers_path

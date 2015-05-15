@@ -1,0 +1,54 @@
+%h2 Evaluaci&oacute;n de profesores
+
+.row
+  .col-md-6
+    - if user_signed_in?
+      %blockquote
+        %i Para evaluar un profesor haga click sobre la fila en la tabla.
+  .col-md-6
+    .dropdown.pull-right
+      %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
+        Escoja una escuela
+        %span.caret
+      %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+        %li{:role => "presentation"}
+          %a{:href => "", :role => "menuitem", :tabindex => "-1"} Computacion
+        %li{:role => "presentation"}
+          %a{:href => "", :role => "menuitem", :tabindex => "-1"} Mecatronica
+        %li{:role => "presentation"}
+          %a{:href => "", :role => "menuitem", :tabindex => "-1"} Electronica
+        %li{:role => "presentation"}
+          %a{:href => "", :role => "menuitem", :tabindex => "-1"} Agronomia
+
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th{"data-field" => "last_name"} Apellidos
+      %th{"data-field" => "name"} Nombre
+      %th{"data-field" => "amt_eval"} Numero evaluaciones
+      %th{"data-field" => "average"} Promedio
+  %tboby
+    - if user_signed_in?
+      %tr{:onclick => "evalTeacher()"}
+        %td Arias
+        %td Carlos
+        %td 10000
+        %td ?
+    - else
+      %tr
+        %td Arias
+        %td Carlos
+        %td 10000
+        %td ?
+    %tr{:onclick => "evalTeacher()"}
+      %td Villalobos
+      %td Luizz
+      %td 12
+      %td 0.0001
+    %tr{:onclick => "evalTeacher()"}
+      %td Vargas Lopez
+      %td Haby
+      %td 6
+      %td Negatives not supported
+
