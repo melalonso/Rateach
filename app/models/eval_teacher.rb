@@ -1,3 +1,4 @@
 class EvalTeacher < ActiveRecord::Base
-  belongs_to :teacher, dependent: :destroy
+  belongs_to :teacher
+  belongs_to :user
 end
