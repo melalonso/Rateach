@@ -1,7 +1,8 @@
 class CreateEvalTeachers < ActiveRecord::Migration
   def change
     create_table :eval_teachers do |t|
-      t.belongs_to :teacher
+      t.belongs_to :teacher  , index: true
+      t.belongs_to :user , index: true
       t.integer :rubric1
       t.integer :rubric2
       t.integer :rubric3
@@ -15,6 +16,7 @@ class CreateEvalTeachers < ActiveRecord::Migration
 
       t.timestamps
 
+      t.foreign_key (:users)
       t.foreign_key (:teachers)
     end
   end
