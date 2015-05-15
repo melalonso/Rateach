@@ -8,10 +8,8 @@ class CreateTeachers < ActiveRecord::Migration
       t.float :sum_eval
       t.integer :cant_eval
       t.timestamps
-
       t.foreign_key (:universities)
       t.foreign_key (:faculties)
     end
-
   end
 end
