@@ -5,7 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 User.delete_all
+University.delete_all
+Faculty.delete_all
+Teacher.delete_all
+Career.delete_all
+Course.delete_all
 
 user = User.create([
                        {id:1 ,email:'badsa@badsacorp.com',name:'badsa',manager:true,password:'12345678'},
@@ -14,3 +20,58 @@ user = User.create([
                        {id:4 ,email:'bayron@badsacorp.com',name:'bayron',manager:false,password:'12345678'},
                        {id:5 ,email:'sebas@badsacorp.com',name:'sebas',manager:false,password:'12345678'}
                    ])
+
+
+universities = University.create ([
+    {id: 1, name: 'Instituto Tecnologico de Costa Rica', description: 'El Tecnológico de Costa Rica (TEC) es una institución
+nacional autónoma de educación superior universitaria,
+dedicada a la docencia, la investigación y la extensión
+de la tecnología y ciencias conexas para el desarrollo
+de Costa Rica. Fue creado mediante ley No. 4777 del
+10 de junio de 1971. En su estructura organizativa se
+destacan las siguientes instancias:
+- Asamblea Institucional: mpaxima autoridad del TEC.
+- Consejo Institucional: órgano directivo superior del TEC.
+- Rector: el rector es el funcionario de más alta jerarquía ejecutiva del TEC.
+- Vicerrectorías: para cumplir con sus políticas específicas, el TEC cuenta con cuatro.',logo: 'ITCR_logo.svg.png'},
+
+    {id:2, name: 'Universidad de Costa Rica', description: 'Desde su creación en 1940, la Universidad de Costa Rica es una institución que ha
+encauzado su quehacer en concordancia con una búsqueda constante, inagotable y libre, de la verdad, la eficacia y la belleza, como lo establece su Estatuto Orgánico.',logo: 'UCR_logo.png'},
+
+    {id:3, name:'Universidad Nacional de Costa Rica', description:'La Universidad Nacional es una de las instituciones más representativas de la Educación Superior costarricense,
+no solo por ser la segunda casa de estudios universitarios creada en el país, sino porque, desde sus orígenes, ha construido un proyecto educativo, científico, cultural y social integral,
+inclusivo y sobre todo, al servicio de la sociedad costarricense. Esta misión la ha emprendido mediante el desarrollo de dos importantes tareas: la formación de profesionales de alto nivel y el intercambio con la sociedad civil,
+de conocimientos y saberes en sus más variadas expresiones, por medio de la investigación y la extensión social.',logo: 'UNA_logo.png'}
+])
+
+faculty = Faculty.create([
+                             {id:1,university_id:1,name:"Administacion de empresas"},
+                             {id:2,university_id:1,name:"Agronegocios"},
+                             {id:3,university_id:1,name:"Biologia"},
+                             {id:4,university_id:1,name:"Ciencia e Ingeniería de los Materiales"},
+                             {id:5,university_id:1,name:"Ciencias del Lenguaje"},
+                             {id:6,university_id:1,name:"Ciencias Sociales"},
+                             {id:7,university_id:1,name:"Cultura y Deporte"},
+                             {id:8,university_id:1,name:"Electromecanica"},
+                             {id:9,university_id:1,name:"Electronica"},
+                             {id:10,university_id:1,name:"Computacion"}
+                         ])
+
+teachers = Teacher.create([
+    {id:1, university_id:1, faculty_id:1, name: 'Diego', last_name:'Munguia', sum_eval:250.0, cant_eval:3}
+                          ])
+
+careers = Career.create ([
+                            {id:1, university_id:1, faculty_id:10, name:"Ingenieria en Computacion"},
+                            {id:2, university_id:1, faculty_id:10, name:"Ingenieria en Computadores"}
+                        ])
+
+courses = Course.create([
+                            {id:1, university_id:1, faculty_id:1, career_id:1, name:'Ingles_I_para_Computacion'},
+                            {id:2, university_id:1, faculty_id:1, career_id:1, name: 'Comunicacion_Tecnica'},
+                            {id:3, university_id:1, faculty_id:1, career_id:1, name: 'Fundamentos_de_Organizacion_de_Computadoras'},
+                            {id:4, university_id:1, faculty_id:1, career_id:1, name: 'Introduccion_a_la_Programacion'},
+                            {id:5, university_id:1, faculty_id:1, career_id:1, name: 'Taller_de_Programacion'},
+                            {id:6, university_id:1, faculty_id:1, career_id:1, name: 'Matematica_Discreta'},
+                            {id:7, university_id:1, faculty_id:1, career_id:1, name: 'Actividad_Cultural_I'}
+                        ])

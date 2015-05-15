@@ -1,49 +1,24 @@
 .row
   .col-lg-12
     %h1.page-header
-      %p#test Universidades
+      Universidades
 
-.row.university
-  .col-md-4
-    %a{:href => "#"}
-      %img.img-responsive.university-logo{:src => asset_path("ITCR_logo.svg.png"), :alt=> 'Imagen de la universidad'}
-  .col-md-8
-    %h3 Tecnologico de Costa Rica
-    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.
-    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.
-    %a.btn.btn-primary{:href => "#"}
-      Ver Profesores
-    %a.btn.btn-primary{:href => "#"}
-      Ver Cursos
-%hr/
+- @universities.each do |uni|
+  .row.university
+    .col-md-4
+      %a{:href => "#"}
+        %img.img-responsive.university-logo{:src => asset_path( "#{uni.logo}"), :alt=> 'Imagen de la universidad'}
+    .col-md-8
+      %h3
+        = uni.name
+      %p
+        = uni.description
+      = link_to teachers_path, :class => "btn btn-primary",:value => "#{uni.id}" do
+        Ver Profesores
+      = link_to teachers_path, :class => "btn btn-primary",:value => "#{uni.id}" do
+        Ver Cursos
+  %hr/
 
-.row.university
-  .col-md-4
-    %a{:href => "#"}
-      %img.img-responsive.university-logo{:src => asset_path("UNA_logo.png"), :alt=> 'Imagen de la universidad'}
-  .col-md-8
-    %h3 Universidad Nacional
-    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.
-    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.
-    %a.btn.btn-primary{:href => "#"}
-      Ver Profesores
-    %a.btn.btn-primary{:href => "#"}
-      Ver Cursos
-%hr/
-
-.row.university
-  .col-md-4
-    %a{:href => "#"}
-      %img.img-responsive.university-logo{:src => asset_path("UCR_logo.png"), :alt=> 'Imagen de la universidad'}
-  .col-md-8
-    %h3 Universidad de Costa Rica
-    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.
-    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.
-    %a.btn.btn-primary{:href => "#"}
-      Ver Profesores
-    %a.btn.btn-primary{:href => "#"}
-      Ver Cursos
-%hr/
 
 
 / Pagination
