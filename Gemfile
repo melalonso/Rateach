@@ -57,3 +57,5 @@ gem 'omniauth-google-oauth2'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+
+gem 'foreigner'

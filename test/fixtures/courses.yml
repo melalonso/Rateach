@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  sum_eval: 1.5
+  cant_eval: 1
+
+two:
+  name: MyString
+  sum_eval: 1.5
+  cant_eval: 1
