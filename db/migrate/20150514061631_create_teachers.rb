@@ -6,7 +6,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :name
       t.string :last_name
       t.float :sum_eval
-      t.integer :amount_eval
+      t.integer :cant_eval
       t.timestamps
       t.foreign_key (:universities)
       t.foreign_key (:faculties)

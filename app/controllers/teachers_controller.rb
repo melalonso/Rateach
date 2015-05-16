@@ -4,7 +4,7 @@ class TeachersController < ApplicationController
   respond_to :html
 
   def index
-    @teachers = Teacher.all
+  @teachers = Teacher.all
     respond_with(@teachers)
   end
 

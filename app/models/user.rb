@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 	has_many :course_comments, dependent: :destroy
 	has_many :teacher_comments, dependent: :destroy
-	has_many :eval_courses, dependent: :destroy
-	has_many :eval_teachers, dependent: :destroy
+	has_many :course_evaluations, dependent: :destroy
+	has_many :teacher_evaluations, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
