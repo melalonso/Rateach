@@ -1,4 +1,4 @@
-class EvalTeacher < ActiveRecord::Base
+class TeacherEvaluation < ActiveRecord::Base
   belongs_to :teacher
   belongs_to :user
 end
