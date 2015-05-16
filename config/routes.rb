@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :universities
+  get 'universities/:id/teachers' => 'university#show_teachers'
+
   resources :teachers
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }

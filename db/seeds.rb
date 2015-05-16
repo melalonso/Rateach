@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -43,6 +44,7 @@ no solo por ser la segunda casa de estudios universitarios creada en el país, s
 inclusivo y sobre todo, al servicio de la sociedad costarricense. Esta misión la ha emprendido mediante el desarrollo de dos importantes tareas: la formación de profesionales de alto nivel y el intercambio con la sociedad civil,
 de conocimientos y saberes en sus más variadas expresiones, por medio de la investigación y la extensión social.',logo: 'UNA_logo.png'}
 ])
+
 
 faculty = Faculty.create([
                              {id:1,university_id:1,name:"Administacion de empresas"},
