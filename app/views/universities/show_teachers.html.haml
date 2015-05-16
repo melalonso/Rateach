@@ -1,0 +1,47 @@
+%h2 Evaluaci&oacute;n de profesores
+
+.row
+  .col-md-6
+    - if user_signed_in?
+      %blockquote
+        %i Para evaluar un profesor haga click sobre la fila en la tabla.
+  .col-md-6
+    .dropdown.pull-right
+      %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
+        Escoja una escuela
+        %span.caret
+      %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+        %li{:role => "presentation"}
+          %a{:href => "", :role => "menuitem", :tabindex => "-1"} Computacion
+        %li{:role => "presentation"}
+          %a{:href => "", :role => "menuitem", :tabindex => "-1"} Mecatronica
+        %li{:role => "presentation"}
+          %a{:href => "", :role => "menuitem", :tabindex => "-1"} Electronica
+        %li{:role => "presentation"}
+          %a{:href => "", :role => "menuitem", :tabindex => "-1"} Agronomia
+
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th{"data-field" => "last_name"} Apellidos
+      %th{"data-field" => "name"} Nombre
+      %th{"data-field" => "amt_eval"} Numero evaluaciones
+      %th{"data-field" => "average"} Promedio
+  %tboby
+    - @teachers.each do |teacher|
+      - if user_signed_in?
+        %tr{:onclick => "evalTeacher()"}
+          %td= teacher.last_name
+          %td= teacher.name
+          %td= teacher.cant_eval
+          %td= teacher.sum_eval/teacher.cant_eval
+      - else
+        %tr
+          %td= teacher.last_name
+          %td= teacher.name
+          %td= teacher.cant_eval
+          %td= teacher.sum_eval/teacher.cant_eval
+
+
+
