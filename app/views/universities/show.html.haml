@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @university.name
+%p
+  %b Description:
+  = @university.description
+%p
+  %b Logo:
+  = @university.logo
+
+= link_to 'Edit', edit_university_path(@university)
+\|
+= link_to 'Back', universities_path

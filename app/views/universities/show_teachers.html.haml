@@ -29,26 +29,19 @@
       %th{"data-field" => "amt_eval"} Numero evaluaciones
       %th{"data-field" => "average"} Promedio
   %tboby
-    - if user_signed_in?
-      %tr{:onclick => "evalTeacher()"}
-        %td Arias
-        %td Carlos
-        %td 10000
-        %td ?
-    - else
-      %tr
-        %td Arias
-        %td Carlos
-        %td 10000
-        %td ?
-    %tr{:onclick => "evalTeacher()"}
-      %td Villalobos
-      %td Luizz
-      %td 12
-      %td 0.0001
-    %tr{:onclick => "evalTeacher()"}
-      %td Vargas Lopez
-      %td Haby
-      %td 6
-      %td Negatives not supported
+    - @teachers.each do |teacher|
+      - if user_signed_in?
+        %tr{:onclick => "evalTeacher()"}
+          %td= teacher.last_name
+          %td= teacher.name
+          %td= teacher.cant_eval
+          %td= teacher.sum_eval/teacher.cant_eval
+      - else
+        %tr
+          %td= teacher.last_name
+          %td= teacher.name
+          %td= teacher.cant_eval
+          %td= teacher.sum_eval/teacher.cant_eval
+
+
 
