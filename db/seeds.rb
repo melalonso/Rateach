@@ -8,7 +8,7 @@ user = User.create([
                    ])
 
 universities = University.create([
-                      {id: 1, name: 'Instituto Tecnologico de Costa Rica', description: "El Tecnológico de Costa Rica (TEC) es una institución
+                      {id: 1, name: 'Instituto Tecnologico de Costa Rica', description: 'El Tecnológico de Costa Rica (TEC) es una institución
                   nacional autónoma de educación superior universitaria,
                   dedicada a la docencia, la investigación y la extensión
                   de la tecnología y ciencias conexas para el desarrollo
@@ -18,9 +18,9 @@ universities = University.create([
                   - Asamblea Institucional: mpaxima autoridad del TEC.
                   - Consejo Institucional: órgano directivo superior del TEC.
                   - Rector: el rector es el funcionario de más alta jerarquía ejecutiva del TEC.
-                  - Vicerrectorías: para cumplir con sus políticas específicas, el TEC cuenta con cuatro."},
-                      {id:2, name: 'Universidad de Costa Rica', description: "Desde su creación en 1940, la Universidad de Costa Rica es una institución que ha
-                  encauzado su quehacer en concordancia con una búsqueda constante, inagotable y libre, de la verdad, la eficacia y la belleza, como lo establece su Estatuto Orgánico."},
+                  - Vicerrectorías: para cumplir con sus políticas específicas, el TEC cuenta con cuatro.'},
+                      {id:2, name: 'Universidad de Costa Rica', description: 'Desde su creación en 1940, la Universidad de Costa Rica es una institución que ha
+                  encauzado su quehacer en concordancia con una búsqueda constante, inagotable y libre, de la verdad, la eficacia y la belleza, como lo establece su Estatuto Orgánico.'},
                       {id:3, name:'Universidad Nacional de Costa Rica', description:'La Universidad Nacional es una de las instituciones más representativas de la Educación Superior costarricense,
                         no solo por ser la segunda casa de estudios universitarios creada en el país, sino porque, desde sus orígenes, ha construido un proyecto educativo, científico, cultural y social integral,
                         inclusivo y sobre todo, al servicio de la sociedad costarricense. Esta misión la ha emprendido mediante el desarrollo de dos importantes tareas: la formación de profesionales de alto nivel y el intercambio con la sociedad civil,

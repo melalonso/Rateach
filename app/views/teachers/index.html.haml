@@ -1,0 +1,27 @@
+%h1 Listing teachers
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Last name
+      %th Sum eval
+      %th Cant eval
+      %th
+      %th
+      %th
+
+  %tbody
+    - @teachers.each do |teacher|
+      %tr
+        %td= teacher.name
+        %td= teacher.last_name
+        %td= teacher.sum_eval
+        %td= teacher.cant_eval
+        %td= link_to 'Show', teacher
+        %td= link_to 'Edit', edit_teacher_path(teacher)
+        %td= link_to 'Destroy', teacher, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Teacher', new_teacher_path
