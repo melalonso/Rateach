@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20150514085337) do
     t.string   "name"
     t.string   "last_name"
     t.float    "sum_eval",      limit: 24
-    t.integer  "cant_eval"
+    t.integer  "amount_eval"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
