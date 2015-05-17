@@ -16,23 +16,21 @@ class TeacherEvaluationService
   end
 
   def insert_teacher_evaluation
-    begin
-      external_eval_teacher_service.create(teacher_evaluation_attributes)
-      teacher = external_teacher_service.find(teacher_id_evaluation_attribute)
-      teacher.amount_eval+=1
-      teacher.sum_eval+=teacher_total_evaluation
-      teacher.save
-    rescue
-      false
-    end
+      if external_teacher_evaluation_service.where(evaluation_where_params).size == 0
+        eval = external_teacher_evaluation_service.create(teacher_evaluation_attributes)
+        teacher = external_teacher_service.find(teacher_id_evaluation_attribute)
+        teacher.eval_amount+=1
+        teacher.eval_sum += teacher_total_evaluation.to_i
+        teacher.save
+        return eval
+      else
+        false
+      end
+
   end
 
   def delete_teacher_evaluation
-    begin
       external_eval_teacher_service.find(teacher_evaluation_attributes).destroy
-    rescue
-      false
-    end
   end
 
   def get_teacher_evaluations
@@ -53,7 +51,7 @@ class TeacherEvaluationService
   end
 
   def teacher_total_evaluation
-    return @rubric1 +@rubric2 +@rubric3 +@rubric4 +@rubric5 +@rubric6 +@rubric7 +@rubric8 +@rubric9 +@rubric10
+    rubric1.to_i + rubric2.to_i + rubric3.to_i + rubric4.to_i + rubric5.to_i + rubric6.to_i + rubric7.to_i + rubric8.to_i + rubric9.to_i + rubric10.to_i
   end
 
   def teacher_evaluation_attributes
@@ -65,8 +63,12 @@ class TeacherEvaluationService
   end
 
   def teacher_id_evaluation_attribute
+    teacher_id
+  end
+
+  def evaluation_where_params
     {
-        id: teacher_id
+        teacher_id: teacher_id, user_id: user_id
     }
   end
 end
