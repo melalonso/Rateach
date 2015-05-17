@@ -1,6 +1,6 @@
-class CreateCourseEvaluation < ActiveRecord::Migration
+class CreateCourseEvaluations < ActiveRecord::Migration
   def change
-    create_table :course_evaluation do |t|
+    create_table :course_evaluations do |t|
       t.belongs_to :course , index: true
       t.belongs_to :user , index: true
       t.integer :rubric1

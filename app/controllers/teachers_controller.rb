@@ -10,6 +10,11 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = get_teachers_with_comments
+    if user_signed_in?
+      evaluated = teacher_evaluated_for_current_user?
+      @teacher.add_attrs(evaluated: evaluated)
+    end
+
     respond_with(@teacher)
   end
 
@@ -48,6 +53,10 @@ class TeachersController < ApplicationController
                              teacher_id: params[:id], name: params[:name], last_name: params[:last_name],
                              faculty_id: params[:faculty_id] , university_id: params[:university_id]
                          }).teacher_with_comments
+    end
+
+    def teacher_evaluated_for_current_user?
+      TeacherService.new({teacher_id: params[:id], user_id: current_user.id}).evaluated_for_user?
     end
     def teacher_params
       params.require(:teacher).permit(:name, :last_name, :eval_amount, :eval_sum)

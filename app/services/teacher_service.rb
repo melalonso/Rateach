@@ -1,5 +1,6 @@
 class TeacherService
   def initialize(params)
+    @user_id = params[:user_id]
     @id = params[:teacher_id]
     @name = params[:name]
     @last_name = params[:last_name]
@@ -33,7 +34,7 @@ class TeacherService
 
   def teacher_with_comments
     puts "ESTO ES UN MSJ DESDE EL SERVICIO"
-    teachers = external_teacher_service.find(teacher_id_attribute[:id])
+    teachers = external_teacher_service.find(teacher_id_attribute)
     teachers.teacher_comments.each do |comment|
       comment.add_attrs(user_name: User.find(comment.user_id).name)
     end
@@ -42,9 +43,13 @@ class TeacherService
 
   end
 
+  def evaluated_for_user?
+    evaluations = external_eval_teacher_service.where(evaluation_where_params)
+    return evaluations.size == 0
+  end
   private
 
-  attr_reader :name, :last_name, :faculty_id, :university_id, :id
+  attr_reader :name, :last_name, :faculty_id, :university_id, :id, :user_id
 
   def external_teacher_service
     Teacher
@@ -61,8 +66,12 @@ class TeacherService
   end
 
   def teacher_id_attribute
+    id
+  end
+
+  def evaluation_where_params
     {
-        id: id
+        teacher_id: id, user_id: user_id
     }
   end
 end

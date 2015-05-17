@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+TeacherEvaluation.delete_all
 TeacherComment.delete_all
 Teacher.delete_all
 Course.delete_all
@@ -64,8 +65,8 @@ faculty = Faculty.create([
                          ])
 
 teachers = Teacher.create([
-    {id:1, university_id:1, faculty_id:1, name: 'Diego', last_name:'Munguia', eval_sum:250.0, eval_amount:3},
-    {id:2, university_id:2, faculty_id:2, name: 'Diego', last_name:'Munguia', eval_sum:250.0, eval_amount:3}
+    {id:1, university_id:1, faculty_id:1, name: 'Diego', last_name:'Munguia', eval_sum:0.0, eval_amount:0},
+    {id:2, university_id:2, faculty_id:2, name: 'Diego', last_name:'Munguia', eval_sum:0.0, eval_amount:0}
                           ])
 
 careers = Career.create ([
