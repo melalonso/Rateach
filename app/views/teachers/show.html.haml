@@ -8,7 +8,11 @@
         %label.hidden#teacher-id= @teacher.id
         - if user_signed_in?
           %a.btn.btn-default.pull-right#comment-teacher{href:"#comment-section"} Dejar un comentario
-          %button.btn.btn-default.pull-right#evaluate-teacher Evaluar Profesor
+          - if @teacher.evaluated
+            %button.btn.btn-default.pull-right#evaluate-teacher Evaluar Profesor
+          - else
+            %button.btn.btn-default.pull-right#evaluate-teacher.disabled Evaluar Profesor
+
 
         %h2 Profesor
         %p.teacher-full-name  #{@teacher.name} #{@teacher.last_name}

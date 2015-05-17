@@ -22,7 +22,7 @@
           - 10.times do |x|
             %div.col-md-12
               %form{id: "rubric#{x+1}"}
-                %span #{x+1}. #{rubrics[x]}
+                %span.teacher-rubrics #{x+1}. #{rubrics[x]}
                 %br/
                 %div.btn-group.teacher-button-group{ 'data-toggle': "buttons"}
                   - 10.times do |j|
