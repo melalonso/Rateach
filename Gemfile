@@ -60,5 +60,3 @@ gem 'twitter-bootstrap-rails'
 
 gem 'foreigner'
 
-#Gem to add services to the model pattern design
-gem 'stripe'

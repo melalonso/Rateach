@@ -14,12 +14,12 @@ Rails.application.routes.draw do
       resources :careers do
         resources :courses do
           resources :course_evaluations
-          resources :comments
+          resources :course_comments
         end
       end
-      resources :professors do
-        resources :professor_evaluations
-        resources :comments
+      resources :teachers do
+        resources :teacher_evaluations
+        resources :teacher_comments
       end
     end
   end

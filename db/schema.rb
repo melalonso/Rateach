@@ -35,22 +35,7 @@ ActiveRecord::Schema.define(version: 20150514085337) do
   add_index "course_comments", ["course_id"], name: "index_course_comments_on_course_id", using: :btree
   add_index "course_comments", ["user_id"], name: "index_course_comments_on_user_id", using: :btree
 
-  create_table "courses", force: true do |t|
-    t.integer  "career_id"
-    t.integer  "university_id"
-    t.integer  "faculty_id"
-    t.string   "name"
-    t.float    "sum_eval",      limit: 24
-    t.integer  "cant_eval"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "courses", ["career_id"], name: "index_courses_on_career_id", using: :btree
-  add_index "courses", ["faculty_id"], name: "index_courses_on_faculty_id", using: :btree
-  add_index "courses", ["university_id"], name: "index_courses_on_university_id", using: :btree
-
-  create_table "eval_courses", force: true do |t|
+  create_table "course_evaluation", force: true do |t|
     t.integer  "course_id"
     t.integer  "user_id"
     t.integer  "rubric1"
@@ -62,28 +47,23 @@ ActiveRecord::Schema.define(version: 20150514085337) do
     t.datetime "updated_at"
   end
 
-  add_index "eval_courses", ["course_id"], name: "index_eval_courses_on_course_id", using: :btree
-  add_index "eval_courses", ["user_id"], name: "index_eval_courses_on_user_id", using: :btree
+  add_index "course_evaluation", ["course_id"], name: "index_course_evaluation_on_course_id", using: :btree
+  add_index "course_evaluation", ["user_id"], name: "index_course_evaluation_on_user_id", using: :btree
 
-  create_table "eval_teachers", force: true do |t|
-    t.integer  "teacher_id"
-    t.integer  "user_id"
-    t.integer  "rubric1"
-    t.integer  "rubric2"
-    t.integer  "rubric3"
-    t.integer  "rubric4"
-    t.integer  "rubric5"
-    t.integer  "rubric6"
-    t.integer  "rubric7"
-    t.integer  "rubric8"
-    t.integer  "rubric9"
-    t.integer  "rubric10"
+  create_table "courses", force: true do |t|
+    t.integer  "career_id"
+    t.integer  "university_id"
+    t.integer  "faculty_id"
+    t.string   "name"
+    t.float    "eval_sum",      limit: 24
+    t.integer  "eval_amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "eval_teachers", ["teacher_id"], name: "index_eval_teachers_on_teacher_id", using: :btree
-  add_index "eval_teachers", ["user_id"], name: "index_eval_teachers_on_user_id", using: :btree
+  add_index "courses", ["career_id"], name: "index_courses_on_career_id", using: :btree
+  add_index "courses", ["faculty_id"], name: "index_courses_on_faculty_id", using: :btree
+  add_index "courses", ["university_id"], name: "index_courses_on_university_id", using: :btree
 
   create_table "faculties", force: true do |t|
     t.integer  "university_id"
@@ -105,13 +85,33 @@ ActiveRecord::Schema.define(version: 20150514085337) do
   add_index "teacher_comments", ["teacher_id"], name: "index_teacher_comments_on_teacher_id", using: :btree
   add_index "teacher_comments", ["user_id"], name: "index_teacher_comments_on_user_id", using: :btree
 
+  create_table "teacher_evaluation", force: true do |t|
+    t.integer  "teacher_id"
+    t.integer  "user_id"
+    t.integer  "rubric1"
+    t.integer  "rubric2"
+    t.integer  "rubric3"
+    t.integer  "rubric4"
+    t.integer  "rubric5"
+    t.integer  "rubric6"
+    t.integer  "rubric7"
+    t.integer  "rubric8"
+    t.integer  "rubric9"
+    t.integer  "rubric10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "teacher_evaluation", ["teacher_id"], name: "index_teacher_evaluation_on_teacher_id", using: :btree
+  add_index "teacher_evaluation", ["user_id"], name: "index_teacher_evaluation_on_user_id", using: :btree
+
   create_table "teachers", force: true do |t|
     t.integer  "university_id"
     t.integer  "faculty_id"
     t.string   "name"
     t.string   "last_name"
-    t.float    "sum_eval",      limit: 24
-    t.integer  "amount_eval"
+    t.float    "eval_sum",      limit: 24
+    t.integer  "eval_amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -155,20 +155,20 @@ ActiveRecord::Schema.define(version: 20150514085337) do
   add_foreign_key "course_comments", "courses", name: "course_comments_course_id_fk"
   add_foreign_key "course_comments", "users", name: "course_comments_user_id_fk"
 
+  add_foreign_key "course_evaluation", "courses", name: "course_evaluation_course_id_fk"
+  add_foreign_key "course_evaluation", "users", name: "course_evaluation_user_id_fk"
+
   add_foreign_key "courses", "careers", name: "courses_career_id_fk"
   add_foreign_key "courses", "faculties", name: "courses_faculty_id_fk"
   add_foreign_key "courses", "universities", name: "courses_university_id_fk"
-
-  add_foreign_key "eval_courses", "courses", name: "eval_courses_course_id_fk"
-  add_foreign_key "eval_courses", "users", name: "eval_courses_user_id_fk"
-
-  add_foreign_key "eval_teachers", "teachers", name: "eval_teachers_teacher_id_fk"
-  add_foreign_key "eval_teachers", "users", name: "eval_teachers_user_id_fk"
 
   add_foreign_key "faculties", "universities", name: "faculties_university_id_fk"
 
   add_foreign_key "teacher_comments", "teachers", name: "teacher_comments_teacher_id_fk"
   add_foreign_key "teacher_comments", "users", name: "teacher_comments_user_id_fk"
+
+  add_foreign_key "teacher_evaluation", "teachers", name: "teacher_evaluation_teacher_id_fk"
+  add_foreign_key "teacher_evaluation", "users", name: "teacher_evaluation_user_id_fk"
 
   add_foreign_key "teachers", "faculties", name: "teachers_faculty_id_fk"
   add_foreign_key "teachers", "universities", name: "teachers_university_id_fk"

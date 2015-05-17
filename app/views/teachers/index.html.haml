@@ -1,27 +1,29 @@
-%h1 Listing teachers
+%h1 Lista de Profesores
 
-%table
+%table.table.table-hover
   %thead
     %tr
-      %th Name
-      %th Last name
-      %th Sum eval
+      %th Nombre
+      %th Apellidos
+      /%th Sum eval
       %th Cant eval
+      %th Porcentaje
       %th
-      %th
-      %th
+      /%th
 
   %tbody
     - @teachers.each do |teacher|
-      %tr
+      %tr{id: "teacher_#{teacher.id}"}
         %td= teacher.name
         %td= teacher.last_name
-        %td= teacher.sum_eval
-        %td= teacher.cant_eval
-        %td= link_to 'Show', teacher
-        %td= link_to 'Edit', edit_teacher_path(teacher)
-        %td= link_to 'Destroy', teacher, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        /%td= teacher.eval_sum
+        %td= teacher.eval_amount
+        - total = teacher.eval_sum / teacher.eval_amount
+        %td= number_with_precision(total, precision: 2)
+        %td= link_to 'Ver Profesor', teacher, {class: "btn btn-default"}
+        /%td= link_to 'Edit', edit_teacher_path(teacher)
+        /%td= link_to 'Destroy', teacher, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Teacher', new_teacher_path
+/= link_to 'New Teacher', new_teacher_path

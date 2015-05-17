@@ -5,8 +5,8 @@ class CreateTeachers < ActiveRecord::Migration
       t.belongs_to :faculty , index: true
       t.string :name
       t.string :last_name
-      t.float :sum_eval
-      t.integer :cant_eval
+      t.float :eval_sum, default: 0.0
+      t.integer :eval_amount, default: 0
       t.timestamps
       t.foreign_key (:universities)
       t.foreign_key (:faculties)

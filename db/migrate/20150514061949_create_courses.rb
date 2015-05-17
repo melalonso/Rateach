@@ -5,8 +5,8 @@ class CreateCourses < ActiveRecord::Migration
       t.belongs_to :university , index: true
       t.belongs_to :faculty , index: true
       t.string :name , index: true
-      t.float :sum_eval , index: true
-      t.integer :cant_eval , index: true
+      t.float :eval_sum , index: true
+      t.integer :eval_amount , index: true
 
       t.timestamps
 
