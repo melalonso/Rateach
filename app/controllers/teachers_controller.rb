@@ -4,8 +4,8 @@ class TeachersController < ApplicationController
   respond_to :html
 
   def index
-  @teachers = Teacher.where(university_id: params[:uid])
-  respond_with(@teachers)
+    @teachers = Teacher.where(university_id: params[:university_id])
+    respond_with(@teachers)
   end
 
   def show

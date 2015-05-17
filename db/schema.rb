@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514085337) do
+ActiveRecord::Schema.define(version: 20150517210237) do
 
   create_table "careers", force: true do |t|
     t.integer  "faculty_id"
@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(version: 20150514085337) do
     t.integer  "faculty_id"
     t.string   "name"
     t.string   "last_name"
-    t.float    "eval_sum",      limit: 24
-    t.integer  "eval_amount"
+    t.float    "eval_sum",      limit: 24, default: 0.0
+    t.integer  "eval_amount",              default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

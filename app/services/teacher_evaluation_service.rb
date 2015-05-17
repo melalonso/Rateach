@@ -19,8 +19,8 @@ class TeacherEvaluationService
     begin
       external_eval_teacher_service.create(teacher_evaluation_attributes)
       teacher = external_teacher_service.find(teacher_id_evaluation_attribute)
-      teacher.amount_eval+=1
-      teacher.sum_eval+=teacher_total_evaluation
+      teacher.eval_amount+=1
+      teacher.eval_sum+=teacher_total_evaluation
       teacher.save
     rescue
       false

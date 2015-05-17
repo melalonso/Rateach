@@ -84,5 +84,11 @@ courses = Course.create([
                         ])
 TeacherComment.create([
                           {id:1, user_id:1, teacher_id:1, content: "Es un excelente profesor"},
-                          {id:2, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"}
+                          {id:2, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
+                          {id:3, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
+                          {id:4, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
+                          {id:5, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
+                          {id:6, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
+                          {id:7, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
+                          {id:8, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"}
                       ])

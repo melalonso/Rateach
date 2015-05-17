@@ -4,18 +4,13 @@ class TeacherEvaluationsController < ApplicationController
     render layout: false
   end
 
-
   def create
     @teacher_evaluation = create_with_teacher_evaluation_service
     respond_with(@teacher_evaluation)
   end
 
   def show
-  @teacher_evaluations = get_evaluations_from_teacher
-  end
-
-  def create
-
+    @teacher_evaluations = get_evaluations_from_teacher
   end
 
   private
