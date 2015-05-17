@@ -1,5 +1,5 @@
-require 'stripe'
-class EvalTeacherService
+
+class TeacherEvaluationService
   def initialize(params)
     @user_id = params[:user_id]
     @teacher_id = params[:teacher_id]
@@ -15,24 +15,28 @@ class EvalTeacherService
     @rubric10 = params[:rubric10]
   end
 
-  def insert_eval_teacher
+  def insert_teacher_evaluation
     begin
-      external_eval_teacher_service.create(eval_teacher_attributes)
-      teacher = external_teacher_service.find(eval_teacher_id_attribute)
+      external_eval_teacher_service.create(teacher_evaluation_attributes)
+      teacher = external_teacher_service.find(teacher_id_evaluation_attribute)
       teacher.amount_eval+=1
-      teacher.sum_eval+=eval_teacher_total
+      teacher.sum_eval+=teacher_total_evaluation
       teacher.save
     rescue
       false
     end
   end
 
-  def delete_eval_teacher
+  def delete_teacher_evaluation
     begin
-      external_eval_teacher_service.find(eval_teacher_attributes).destroy
+      external_eval_teacher_service.find(teacher_evaluation_attributes).destroy
     rescue
       false
     end
+  end
+
+  def get_teacher_evaluations
+    external_teacher_service.find(teacher_id_evaluation_attribute).teacher_evaluations
   end
 
   private
@@ -40,19 +44,19 @@ class EvalTeacherService
   attr_reader :user_id, :teacher_id, :rubric1, :rubric2, :rubric3, :rubric4,
               :rubric5, :rubric6, :rubric7, :rubric8, :rubric9, :rubric10
 
-  def external_eval_teacher_service
-    Stripe::EvalTeacher
+  def external_teacher_evaluation_service
+    TeacherEvaluation
   end
 
   def external_teacher_service
-    Stripe::Teacher
+    Teacher
   end
 
-  def eval_teacher_total
+  def teacher_total_evaluation
     return @rubric1 +@rubric2 +@rubric3 +@rubric4 +@rubric5 +@rubric6 +@rubric7 +@rubric8 +@rubric9 +@rubric10
   end
 
-  def eval_teacher_attributes
+  def teacher_evaluation_attributes
     {
         user_id: user_id, teacher_id: teacher_id, rubric1: rubric1, rubric2: rubric2,
         rubric3: rubric3, rubric4: rubric4, rubric5: rubric5, rubric6: rubric6,
@@ -60,7 +64,7 @@ class EvalTeacherService
     }
   end
 
-  def eval_teacher_id_attribute
+  def teacher_id_evaluation_attribute
     {
         id: teacher_id
     }

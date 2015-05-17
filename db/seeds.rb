@@ -6,12 +6,17 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.delete_all
-University.delete_all
-Faculty.delete_all
+TeacherComment.delete_all
 Teacher.delete_all
-Career.delete_all
 Course.delete_all
+Career.delete_all
+User.delete_all
+Faculty.delete_all
+University.delete_all
+
+
+
+
 
 user = User.create([
                        {id:1 ,email:'badsa@badsacorp.com',name:'badsa',manager:true,password:'12345678'},
@@ -47,7 +52,7 @@ de conocimientos y saberes en sus más variadas expresiones, por medio de la inv
 
 faculty = Faculty.create([
                              {id:1,university_id:1,name:"Administacion de empresas"},
-                             {id:2,university_id:1,name:"Agronegocios"},
+                             {id:2,university_id:2,name:"Agronegocios"},
                              {id:3,university_id:1,name:"Biologia"},
                              {id:4,university_id:1,name:"Ciencia e Ingeniería de los Materiales"},
                              {id:5,university_id:1,name:"Ciencias del Lenguaje"},
@@ -59,20 +64,25 @@ faculty = Faculty.create([
                          ])
 
 teachers = Teacher.create([
-    {id:1, university_id:1, faculty_id:1, name: 'Diego', last_name:'Munguia', sum_eval:250.0, cant_eval:3}
+    {id:1, university_id:1, faculty_id:1, name: 'Diego', last_name:'Munguia', eval_sum:250.0, eval_amount:3},
+    {id:2, university_id:2, faculty_id:2, name: 'Diego', last_name:'Munguia', eval_sum:250.0, eval_amount:3}
                           ])
 
 careers = Career.create ([
                             {id:1, university_id:1, faculty_id:10, name:"Ingenieria en Computacion"},
-                            {id:2, university_id:1, faculty_id:10, name:"Ingenieria en Computadores"}
+                            {id:2, university_id:2, faculty_id:2, name:"Ingenieria en Computadores"}
                         ])
 
 courses = Course.create([
-                            {id:1, university_id:1, faculty_id:1, career_id:1, name:'Ingles_I_para_Computacion'},
-                            {id:2, university_id:1, faculty_id:1, career_id:1, name: 'Comunicacion_Tecnica'},
+                            {id:1, university_id:1, faculty_id:1, career_id:2, name:'Ingles_I_para_Computacion'},
+                            {id:2, university_id:2, faculty_id:2, career_id:1, name: 'Comunicacion_Tecnica'},
                             {id:3, university_id:1, faculty_id:1, career_id:1, name: 'Fundamentos_de_Organizacion_de_Computadoras'},
                             {id:4, university_id:1, faculty_id:1, career_id:1, name: 'Introduccion_a_la_Programacion'},
                             {id:5, university_id:1, faculty_id:1, career_id:1, name: 'Taller_de_Programacion'},
                             {id:6, university_id:1, faculty_id:1, career_id:1, name: 'Matematica_Discreta'},
                             {id:7, university_id:1, faculty_id:1, career_id:1, name: 'Actividad_Cultural_I'}
                         ])
+TeacherComment.create([
+                          {id:1, user_id:1, teacher_id:1, content: "Es un excelente profesor"},
+                          {id:2, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"}
+                      ])

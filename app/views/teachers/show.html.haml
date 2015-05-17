@@ -1,18 +1,26 @@
-%p#notice= notice
+//%p#notice= notice
+.modal.fade.bs-example-modal-lg#evaluationModal{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+  %button#submit-comment.btn.btn-sm.btn-default.pull-right Comentar
+%div.row
+  %div.container
+    %div.col-md-12
+      %div.teacher-info
+        %label.hidden#teacher-id= @teacher.id
+        - if user_signed_in?
+          %button.btn.btn-default.pull-right#evaluate-teacher Evaluar Profesor
+        %h2 Profesor
+        %p.teacher-full-name  #{@teacher.name} #{@teacher.last_name}
 
-%p
-  %b Name:
-  = @teacher.name
-%p
-  %b Last name:
-  = @teacher.last_name
-%p
-  %b Sum eval:
-  = @teacher.sum_eval
-%p
-  %b Cant eval:
-  = @teacher.cant_eval
 
-= link_to 'Edit', edit_teacher_path(@teacher)
-\|
-= link_to 'Back', teachers_path
+%div.row
+  %div.container
+    %div.col-md-12
+      %div.teacher-comments
+        %h2 Comentarios para #{@teacher.name}
+        %ul
+          - @teacher.teacher_comments.each do |comment|
+            %li
+              %span #{comment.user_name} #{comment.created_at.strftime('%d %b %Y %I:%M %p') }
+              %p #{comment.content}
+
+/%script{src: '/assets/teachers.js'}

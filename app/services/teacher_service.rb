@@ -1,8 +1,6 @@
-
-require 'stripe'
 class TeacherService
   def initialize(params)
-    @id = params[:teacher_id] if params[:teacher_id]
+    @id = params[:teacher_id]
     @name = params[:name]
     @last_name = params[:last_name]
     @faculty_id = params[:faculty_id]
@@ -33,17 +31,27 @@ class TeacherService
     end
   end
 
+  def teacher_with_comments
+    puts "ESTO ES UN MSJ DESDE EL SERVICIO"
+    teachers = external_teacher_service.find(teacher_id_attribute[:id])
+    teachers.teacher_comments.each do |comment|
+      comment.add_attrs(user_name: User.find(comment.user_id).name)
+    end
+    puts teachers
+    return teachers
+
+  end
 
   private
 
   attr_reader :name, :last_name, :faculty_id, :university_id, :id
 
   def external_teacher_service
-    Stripe::Teacher
+    Teacher
   end
 
   def external_eval_teacher_service
-    Stripe::EvalTeacher
+    TeacherEvaluation
   end
 
   def teacher_attributes
@@ -54,7 +62,7 @@ class TeacherService
 
   def teacher_id_attribute
     {
-        teacher_id: id
+        id: id
     }
   end
 end
