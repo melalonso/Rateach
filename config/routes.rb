@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :faculties
+
   resources :teacher_comments
 
   resources :universities
@@ -14,14 +16,15 @@ Rails.application.routes.draw do
 
   resources :universities, only: :index, shallow: true do
 
-    resources :courses do
-      resources :course_evaluations
-      resources :course_comments
-    end
-
-    resources :teachers do
-      resources :teacher_evaluations
-      resources :teacher_comments
+    resources :faculties do
+      resources :teachers do
+        resources :teacher_evaluations
+        resources :teacher_comments
+      end
+      resources :courses do
+        resources :course_evaluations
+        resources :course_comments
+      end
     end
 
   end

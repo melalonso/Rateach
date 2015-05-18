@@ -1,0 +1,21 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Nombre
+      %th Apellidos
+      %th Cantidad evaluaciones
+      %th Calificacion General
+      %th
+
+  %tbody
+    - @teachers.each do |teacher|
+      %tr{id: "teacher_#{teacher.id}"}
+        %td= teacher.name
+        %td= teacher.last_name
+        /%td= teacher.eval_sum
+        %td= teacher.eval_amount
+        - total = teacher.eval_sum / teacher.eval_amount
+        - if teacher.eval_amount == 0
+          - total=0
+        %td= number_with_precision(total, precision: 2)
+        %td= link_to 'Ver Profesor', teacher, {class: "btn btn-default"}
