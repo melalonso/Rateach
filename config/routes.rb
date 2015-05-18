@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :faculties
-
   resources :teacher_comments
 
   resources :universities

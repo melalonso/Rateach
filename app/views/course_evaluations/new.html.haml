@@ -1,0 +1,31 @@
+-rubrics = ["Considera importante para la carrera.",
+"Cantidad de contenidos de acuerdo al periodo lectivo.",
+"Contenido actualizado según las necesidades del mercado.",
+"Material de apoyo existente para el curso",
+"Utiliza una metodología adecuada según los contenidos. (Clases presenciales, exposiciones, laboratorios u otros recursos)."]
+
+
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+      %h3#post-modal-title.modal-title Evaluacion para curso
+      %small Siguiendo la rubica evalue al curso seleccionando un numero para cada rubro a evaluar
+    .modal-body
+      %div.row
+        %div.teacher-evaluation
+          - 5.times do |x|
+            %div.col-md-12
+              %form{id: "rubric#{x+1}"}
+                %span.course-rubrics #{x+1}. #{rubrics[x]}
+                %br/
+                %div.btn-group.course-button-group{ 'data-toggle': "buttons"}
+                  - 10.times do |j|
+                    %label.btn.btn-default
+                      %input{:name => "radioName", :type => "radio", :value => "#{j+1}"}/
+                      #{j+1}
+
+          %div.col-md-12
+            %button.btn.btn-default.pull-right#send-course-evaluation Enviar Evaluacion
+

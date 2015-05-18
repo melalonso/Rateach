@@ -1,0 +1,10 @@
+%h1 Lista de escuelas
+
+%label#uid.hidden= params[:university_id]
+%ul.faculties
+  - @faculties.each do |faculty|
+    %li
+      %span= faculty.name
+      = link_to "Ver profesores",  faculty_teachers_path(:faculty_id => "#{faculty.id}") , {:class => "btn btn-default"}
+      = link_to "Ver cursos", faculty_courses_path(:faculty_id => "#{faculty.id}"), {:class=> "btn btn-default"}
+
