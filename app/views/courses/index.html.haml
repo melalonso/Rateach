@@ -4,6 +4,11 @@
   .col-md-2
     %a.btn.btn-default.pull-right{onclick:"javascript:window.history.back();"} Ir atras
 
+.row
+  .col-md-6
+    - if !user_signed_in?
+      %blockquote
+        %i Inicie sesi&oacute;n para evaluar.
 
 %table.table.table-hover
   %thead
@@ -25,7 +30,10 @@
           - total=0
         %td= number_with_precision(total, precision: 2)
         %td= link_to 'Ver Curso', course, {class: "btn btn-default"}
-
-%br
-
-/= link_to 'New Course', new_course_path
+-#
+  %tbody{"ng-repeat" => "c in courses"}
+    %tr{:id =>"{{c.id}}" }
+      %td {{c.name}}
+      %td {{c.eval_amount}}
+      %td {{c.eval_sum / c.eval_amount}}
+      %td= link_to 'Ver Curso', course_path(:id =>"{{c.id}}" ), {class: "btn btn-default"}
