@@ -9,6 +9,8 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @course = get_course_with_comments_service
+    @course.add_attrs(evaluated: course_evaluated_by_user?)
     respond_with(@course)
   end
 
@@ -37,11 +39,23 @@ class CoursesController < ApplicationController
   end
 
   private
+
     def set_course
       @course = Course.find(params[:id])
     end
 
-    def course_params
-      params.require(:course).permit(:name, :eval_sum, :eval_amount)
+    def get_course_with_comments_service
+      CourseService.new({
+                        course_id: params[:id]
+                        }).get_course_with_comments
+    end
+
+    def course_evaluated_by_user?
+      CourseService.new({
+                            user_id: current_user.id, course_id: params[:id]
+                        }).course_evaluated_for_user?
+    end
+    def create_with_course_evaluation_service
+      CourseEvaluationService.new(params).insert_course_evaluation
     end
 end
