@@ -1,22 +1,26 @@
-%h1 Listing courses
+%h1 Lista de Cursos
 
-%table
+%table.table.table-hover
   %thead
     %tr
-      %th Name
-      %th Eval sum
-      %th Eval amount
+      %th Nombre
+      /%th Sum eval
+      %th Cant eval
+      %th Calificacion general
       %th
+  /%th
 
   %tbody
     - @courses.each do |course|
-      %tr
+      %tr{id: "teacher_#{course.id}"}
         %td= course.name
-        %td= course.eval_sum
         %td= course.eval_amount
-
-        %td= link_to 'Show', course
+        - total = course.eval_sum / course.eval_amount
+        - if course.eval_amount == 0
+          - total=0
+        %td= number_with_precision(total, precision: 2)
+        %td= link_to 'Ver Curso', course, {class: "btn btn-default"}
 
 %br
 
-= link_to 'New Course', new_course_path
+/= link_to 'New Course', new_course_path

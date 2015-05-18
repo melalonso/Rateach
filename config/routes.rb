@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'course_evaluation/create'
+
   resources :teacher_comments
 
   resources :universities

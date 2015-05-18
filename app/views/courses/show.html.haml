@@ -1,15 +1,40 @@
-%p#notice= notice
+//%p#notice= notice
+.modal.fade.bs-example-modal-lg#evaluation-course-modal{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
+%div.row
+  %div.container
+    %div.col-md-12
+      %div.course-info
+        %label.hidden#course-id= @course.id
+        - if user_signed_in?
+          %a.btn.btn-default.pull-right#comment-course{href:"#comment-section"} Dejar un comentario
+          - if @course.evaluated
+            %button.btn.btn-default.pull-right#evaluate-course Evaluar Curso
+          - else
+            %button.btn.btn-default.pull-right#evaluate-course.disabled Evaluar Curso
 
-%p
-  %b Name:
-  = @course.name
-%p
-  %b Eval sum:
-  = @course.eval_sum
-%p
-  %b Eval amount:
-  = @course.eval_amount
 
-= link_to 'Edit', edit_course_path(@course)
-\|
-= link_to 'Back', courses_path
+        %h2 Nombre del Curso
+        %p.course-full-name  #{@course.name}
+
+  -#
+    %script{src: '/assets/courses.js'}
+
+%div.row
+  %div.container
+    %div.col-md-12
+      %div.course-comments
+        %h2 Comentarios para el curso
+        %ul#course-comment-list
+          - @course.course_comments.each do |comment|
+            %li.comment-element
+              %span #{comment.user_name} #{comment.created_at.strftime('%d %b %Y %I:%M %p') }
+              %p #{comment.content}
+        - if user_signed_in?
+          %label.hidden#user-id= current_user.id
+          %label.hidden#user-name= current_user.name
+          %div.row.make-comment
+            %div.col-md-6
+              %label#comment-section Escribir un comentario
+              %br
+              %textarea#comment-area{rows: 8,cols:64}
+              %button.btn.btn-primary.pull-right#do-comment Comentar

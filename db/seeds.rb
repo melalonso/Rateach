@@ -75,13 +75,13 @@ careers = Career.create ([
                         ])
 
 courses = Course.create([
-                            {id:1, university_id:1, faculty_id:1, career_id:2, name:'Ingles_I_para_Computacion'},
-                            {id:2, university_id:2, faculty_id:2, career_id:1, name: 'Comunicacion_Tecnica'},
-                            {id:3, university_id:1, faculty_id:1, career_id:1, name: 'Fundamentos_de_Organizacion_de_Computadoras'},
-                            {id:4, university_id:1, faculty_id:1, career_id:1, name: 'Introduccion_a_la_Programacion'},
-                            {id:5, university_id:1, faculty_id:1, career_id:1, name: 'Taller_de_Programacion'},
-                            {id:6, university_id:1, faculty_id:1, career_id:1, name: 'Matematica_Discreta'},
-                            {id:7, university_id:1, faculty_id:1, career_id:1, name: 'Actividad_Cultural_I'}
+                            {id:1, university_id:1, faculty_id:1, career_id:2, name:'Ingles_I_para_Computacion', eval_sum:0.0, eval_amount:0},
+                            {id:2, university_id:2, faculty_id:2, career_id:1, name: 'Comunicacion_Tecnica', eval_sum:0.0, eval_amount:0},
+                            {id:3, university_id:1, faculty_id:1, career_id:1, name: 'Fundamentos_de_Organizacion_de_Computadoras', eval_sum:0.0, eval_amount:0},
+                            {id:4, university_id:1, faculty_id:1, career_id:1, name: 'Introduccion_a_la_Programacion', eval_sum:0.0, eval_amount:0},
+                            {id:5, university_id:1, faculty_id:1, career_id:1, name: 'Taller_de_Programacion', eval_sum:0.0, eval_amount:0},
+                            {id:6, university_id:1, faculty_id:1, career_id:1, name: 'Matematica_Discreta', eval_sum:0.0, eval_amount:0},
+                            {id:7, university_id:1, faculty_id:1, career_id:1, name: 'Actividad_Cultural_I', eval_sum:0.0, eval_amount:0}
                         ])
 TeacherComment.create([
                           {id:1, user_id:1, teacher_id:1, content: "Es un excelente profesor"},
