@@ -20,7 +20,7 @@
               %form{id: "rubric#{x+1}"}
                 %span.course-rubrics #{x+1}. #{rubrics[x]}
                 %br/
-                %div.btn-group.course-button-group{ 'data-toggle': "buttons"}
+                %div.btn-group.course-button-group{ 'data-toggle'=> "buttons"}
                   - 10.times do |j|
                     %label.btn.btn-default
                       %input{:name => "radioName", :type => "radio", :value => "#{j+1}"}/

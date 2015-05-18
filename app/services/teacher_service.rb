@@ -32,6 +32,14 @@ class TeacherService
     end
   end
 
+  def filter_if_faculty
+      if (teacher_faculty_attribute != nil)
+        external_teacher_service.where(evaluation_where_faculty)
+      else
+        external_teacher_service.where(evaluation_where_uid)
+      end
+  end
+
   def teacher_with_comments
     puts "ESTO ES UN MSJ DESDE EL SERVICIO"
     teachers = external_teacher_service.find(teacher_id_attribute)
@@ -69,9 +77,26 @@ class TeacherService
     id
   end
 
+  def teacher_faculty_attribute
+    faculty_id
+  end
+
+
   def evaluation_where_params
     {
         teacher_id: id, user_id: user_id
+    }
+  end
+
+  def evaluation_where_uid
+    {
+        university_id: university_id
+    }
+  end
+
+  def evaluation_where_faculty
+    {
+        university_id: university_id,faculty_id: faculty_id
     }
   end
 end

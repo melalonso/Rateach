@@ -6,10 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 TeacherEvaluation.delete_all
 TeacherComment.delete_all
-Teacher.delete_all
+CourseEvaluation.delete_all
+CourseComment.delete_all
 Course.delete_all
+Teacher.delete_all
 Career.delete_all
 User.delete_all
 Faculty.delete_all
@@ -66,7 +69,10 @@ faculty = Faculty.create([
 
 teachers = Teacher.create([
     {id:1, university_id:1, faculty_id:1, name: 'Diego', last_name:'Munguia', eval_sum:0.0, eval_amount:0},
-    {id:2, university_id:2, faculty_id:2, name: 'Diego', last_name:'Munguia', eval_sum:0.0, eval_amount:0}
+    {id:2, university_id:2, faculty_id:2, name: 'Diego', last_name:'Munguia', eval_sum:0.0, eval_amount:0},
+    {id:3, university_id:1, faculty_id:1, name: 'Carlos', last_name:'Arias', eval_sum:0.0, eval_amount:0},
+    {id:4, university_id:1, faculty_id:1, name: 'Daniel', last_name:'Montero', eval_sum:0.0, eval_amount:0},
+    {id:5, university_id:1, faculty_id:1, name: 'Bjarne', last_name:'Stroustrup', eval_sum:0.0, eval_amount:0},
                           ])
 
 careers = Career.create ([
@@ -86,10 +92,10 @@ courses = Course.create([
 TeacherComment.create([
                           {id:1, user_id:1, teacher_id:1, content: "Es un excelente profesor"},
                           {id:2, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
-                          {id:3, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
-                          {id:4, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
+                          {id:3, user_id:3, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
+                          {id:4, user_id:4, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
                           {id:5, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
-                          {id:6, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
-                          {id:7, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
-                          {id:8, user_id:2, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"}
+                          {id:6, user_id:1, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
+                          {id:7, user_id:3, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"},
+                          {id:8, user_id:1, teacher_id:1, content: "Es el dicipulo de Charls, excelente pero hay que tomar apuntes"}
                       ])

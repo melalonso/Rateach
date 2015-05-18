@@ -1,0 +1,15 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Nombre
+      %th Apellidos
+      %th Cantidad evaluaciones
+      %th Calificacion General
+      %th
+
+  %tbody{"ng-repeat" => "t in teachers"}
+    %tr{:id =>"{{t.id}}" }
+      %td {{t.name}}
+      %td {{t.last_name}}
+      %td {{t.eval_amount}}
+      %td= link_to 'Ver Profesor', teacher_path(:id =>"{{t.id}}" ), {class: "btn btn-default"}

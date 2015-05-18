@@ -5,7 +5,7 @@ class TeachersController < ApplicationController
   respond_to :json
 
   def index
-    @teachers = Teacher.where(university_id: params[:university_id])
+    @teachers = Faculty.find(params[:faculty_id]).teachers
     respond_with(@teachers)
   end
 
@@ -59,7 +59,14 @@ class TeachersController < ApplicationController
     def teacher_evaluated_for_current_user?
       TeacherService.new({teacher_id: params[:id], user_id: current_user.id}).evaluated_for_user?
     end
+
     def teacher_params
       params.require(:teacher).permit(:name, :last_name, :eval_amount, :eval_sum)
+    end
+
+    def filter_if_faculty_service
+      TeacherService.new({
+                             faculty_id: params[:faculty] , university_id: params[:university_id]
+                         }).filter_if_faculty
     end
 end

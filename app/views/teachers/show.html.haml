@@ -6,6 +6,7 @@
     %div.col-md-12
       %div.teacher-info
         %label.hidden#teacher-id= @teacher.id
+        %a.btn.btn-default.pull-right{onclick:"javascript:window.history.back();"} Ir atras
         - if user_signed_in?
           %a.btn.btn-default.pull-right#comment-teacher{href:"#comment-section"} Dejar un comentario
           - if @teacher.evaluated

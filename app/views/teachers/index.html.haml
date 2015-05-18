@@ -1,31 +1,15 @@
-%h1 Lista de Profesores
+.row
+  .col-md-10
+    %h1 Lista de Profesores
+  .col-md-2
+    %a.btn.btn-default.pull-right{onclick:"javascript:window.history.back();"} Ir atras
 
-%table.table.table-hover
-  %thead
-    %tr
-      %th Nombre
-      %th Apellidos
-      /%th Sum eval
-      %th Cant eval
-      %th Porcentaje
-      %th
-      /%th
+.row
+  .col-md-6
+    - if !user_signed_in?
+      %blockquote
+        %i Inicie sesi&oacute;n para evaluar.
 
-  %tbody
-    - @teachers.each do |teacher|
-      %tr{id: "teacher_#{teacher.id}"}
-        %td= teacher.name
-        %td= teacher.last_name
-        /%td= teacher.eval_sum
-        %td= teacher.eval_amount
-        - total = teacher.eval_sum / teacher.eval_amount
-        - if teacher.eval_amount == 0
-          - total=0
-        %td= number_with_precision(total, precision: 2)
-        %td= link_to 'Ver Profesor', teacher, {class: "btn btn-default"}
-        /%td= link_to 'Edit', edit_teacher_path(teacher)
-        /%td= link_to 'Destroy', teacher, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-/= link_to 'New Teacher', new_teacher_path
+.teacher-list
+  = render "teachersTable"

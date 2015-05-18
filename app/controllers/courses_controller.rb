@@ -4,13 +4,15 @@ class CoursesController < ApplicationController
   respond_to :html
 
   def index
-    @courses = Course.all
+    @courses = Faculty.find(params[:faculty_id]).courses
     respond_with(@courses)
   end
 
   def show
     @course = get_course_with_comments_service
-    @course.add_attrs(evaluated: course_evaluated_by_user?)
+    if (user_signed_in?)
+      @course.add_attrs(evaluated: course_evaluated_by_user?)
+    end
     respond_with(@course)
   end
 

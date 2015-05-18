@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Content:
+  = @course_comment.content
+
+= link_to 'Edit', edit_course_comment_path(@course_comment)
+\|
+= link_to 'Back', course_comments_path
