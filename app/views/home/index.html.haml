@@ -13,9 +13,9 @@
         = uni.name
       %p
         = uni.description
-      = link_to teachers_path(:uid => "#{uni.id}"), :class => "btn btn-primary" do
+      = link_to university_teachers_path(:university_id => "#{uni.id}"), :class => "btn btn-primary" do
         Ver Profesores
-      = link_to teachers_path, :class => "btn btn-primary",:value => "#{uni.id}" do
+      = link_to university_courses_path(:university_id => "#{uni.id}"), :class => "btn btn-primary" do
         Ver Cursos
   %hr/
 

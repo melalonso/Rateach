@@ -1,0 +1,21 @@
+%h1 Listing teacher_comments
+
+%table
+  %thead
+    %tr
+      %th Content
+      %th
+      %th
+      %th
+
+  %tbody
+    - @teacher_comments.each do |teacher_comment|
+      %tr
+        %td= teacher_comment.content
+        %td= link_to 'Show', teacher_comment
+        %td= link_to 'Edit', edit_teacher_comment_path(teacher_comment)
+        %td= link_to 'Destroy', teacher_comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Teacher comment', new_teacher_comment_path

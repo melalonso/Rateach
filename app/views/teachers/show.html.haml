@@ -7,23 +7,35 @@
       %div.teacher-info
         %label.hidden#teacher-id= @teacher.id
         - if user_signed_in?
+          %a.btn.btn-default.pull-right#comment-teacher{href:"#comment-section"} Dejar un comentario
           - if @teacher.evaluated
             %button.btn.btn-default.pull-right#evaluate-teacher Evaluar Profesor
           - else
             %button.btn.btn-default.pull-right#evaluate-teacher.disabled Evaluar Profesor
+
+
         %h2 Profesor
         %p.teacher-full-name  #{@teacher.name} #{@teacher.last_name}
 
+  -#
+    %script{src: '/assets/teachers.js'}
 
 %div.row
   %div.container
     %div.col-md-12
       %div.teacher-comments
         %h2 Comentarios para #{@teacher.name}
-        %ul
+        %ul#teacher-comment-list
           - @teacher.teacher_comments.each do |comment|
-            %li
+            %li.comment-element
               %span #{comment.user_name} #{comment.created_at.strftime('%d %b %Y %I:%M %p') }
               %p #{comment.content}
-
-/%script{src: '/assets/teachers.js'}
+        - if user_signed_in?
+          %label.hidden#user-id= current_user.id
+          %label.hidden#user-name= current_user.name
+          %div.row.make-comment
+            %div.col-md-6
+              %label#comment-section Escribir un comentario
+              %br
+              %textarea#comment-area{rows: 8,cols:64}
+              %button.btn.btn-primary.pull-right#do-comment Comentar
