@@ -1,10 +1,8 @@
-
 .row
   .col-md-10
     %h1 Lista de Profesores
   .col-md-2
     %a.btn.btn-default.pull-right{onclick:"javascript:window.history.back();"} Ir atras
-
 
 .row
   .col-md-6
@@ -15,7 +13,3 @@
 
 .teacher-list
   = render "teachersTable"
-
-%br
-
-/= link_to 'New Teacher', new_teacher_path

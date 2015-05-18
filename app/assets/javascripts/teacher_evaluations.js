@@ -1,6 +1,7 @@
 
-$(document).ready(function(){
-    $("#evaluationModal").on('click', "#send-evaluation", function(){
+var ready = function() {
+
+    $("body").on('click', "#send-evaluation", function(){
         var evaluationData = {};
         for (var i = 1; i<11; i++){
             var target = "#rubric"+i;
@@ -23,4 +24,8 @@ $(document).ready(function(){
             location.reload();
         });
     });
-});
+
+};
+
+$(document).on('page:load', ready);
+$(document).ready(ready);

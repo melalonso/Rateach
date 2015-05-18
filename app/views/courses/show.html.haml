@@ -5,6 +5,7 @@
     %div.col-md-12
       %div.course-info
         %label.hidden#course-id= @course.id
+        %a.btn.btn-default.pull-right{onclick:"javascript:window.history.back();"} Ir atras
         - if user_signed_in?
           %a.btn.btn-default.pull-right#comment-course{href:"#comment-section"} Dejar un comentario
           - if @course.evaluated
@@ -30,11 +31,11 @@
               %span #{comment.user_name} #{comment.created_at.strftime('%d %b %Y %I:%M %p') }
               %p #{comment.content}
         - if user_signed_in?
-          %label.hidden#user-id= current_user.id
+          %label.hidden#user-id-course= current_user.id
           %label.hidden#user-name= current_user.name
           %div.row.make-comment
             %div.col-md-6
               %label#comment-section Escribir un comentario
               %br
-              %textarea#comment-area{rows: 8,cols:64}
-              %button.btn.btn-primary.pull-right#do-comment Comentar
+              %textarea#comment-area-course{rows: 8,cols:64}
+              %button.btn.btn-primary.pull-right#do-comment-course Comentar

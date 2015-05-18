@@ -1,7 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-$(document).ready(function(){
+var ready = function(){
     $("#evaluation-course-modal").on('click', "#send-course-evaluation", function(){
         var evaluationData = {};
         for (var i = 1; i<6; i++){
@@ -25,4 +25,7 @@ $(document).ready(function(){
             location.reload();
         });
     });
-});
+};
+
+$(document).on('page:load', ready);
+$(document).ready(ready);

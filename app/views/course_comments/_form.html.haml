@@ -1,0 +1,13 @@
+= form_for @course_comment do |f|
+  - if @course_comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@course_comment.errors.count, "error")} prohibited this course_comment from being saved:"
+      %ul
+        - @course_comment.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :content
+    = f.text_area :content
+  .actions
+    = f.submit 'Save'
