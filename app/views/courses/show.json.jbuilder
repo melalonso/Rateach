@@ -1,1 +1,1 @@
-json.extract! @course, :id, :created_at, :updated_at
+json.extract! @course, :id, :name, :eval_sum, :eval_amount, :created_at, :updated_at

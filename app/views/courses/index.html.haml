@@ -3,16 +3,19 @@
 %table
   %thead
     %tr
-      %th
-      %th
+      %th Name
+      %th Eval sum
+      %th Eval amount
       %th
 
   %tbody
     - @courses.each do |course|
       %tr
+        %td= course.name
+        %td= course.eval_sum
+        %td= course.eval_amount
+
         %td= link_to 'Show', course
-        %td= link_to 'Edit', edit_course_path(course)
-        %td= link_to 'Destroy', course, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

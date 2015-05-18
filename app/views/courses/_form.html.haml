@@ -6,5 +6,14 @@
         - @course.errors.full_messages.each do |msg|
           %li= msg
 
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :eval_sum
+    = f.text_field :eval_sum
+  .field
+    = f.label :eval_amount
+    = f.number_field :eval_amount
   .actions
     = f.submit 'Save'

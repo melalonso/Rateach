@@ -1,5 +1,14 @@
 %p#notice= notice
 
+%p
+  %b Name:
+  = @course.name
+%p
+  %b Eval sum:
+  = @course.eval_sum
+%p
+  %b Eval amount:
+  = @course.eval_amount
 
 = link_to 'Edit', edit_course_path(@course)
 \|

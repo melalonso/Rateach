@@ -2,10 +2,11 @@ class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+  respond_to :json
 
   def index
-  @teachers = Teacher.where(university_id: params[:uid])
-  respond_with(@teachers)
+    @teachers = Teacher.where(university_id: params[:university_id])
+    respond_with(@teachers)
   end
 
   def show

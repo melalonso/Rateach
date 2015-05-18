@@ -26,7 +26,6 @@ class TeacherEvaluationService
       else
         false
       end
-
   end
 
   def delete_teacher_evaluation
