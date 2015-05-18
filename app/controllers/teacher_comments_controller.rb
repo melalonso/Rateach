@@ -21,13 +21,8 @@ class TeacherCommentsController < ApplicationController
   end
 
   def create
-
-
-
+    @teacher_comment = create_with_teacher_comment_service
     render text: @teacher_comment.created_at.strftime('%d %b %Y %I:%M %p')
-
-    #@teacher_comment = create_with_teacher_comment_service
-
   end
 
   def update
@@ -42,7 +37,7 @@ class TeacherCommentsController < ApplicationController
 
   private
     def set_teacher_comment
-      @teacher_comment = TeacherComment.find(params[:id])
+      @teacher_comment = TeacherComment.find(params[:teacher_id])
     end
 
     def teacher_comment_params
@@ -50,11 +45,6 @@ class TeacherCommentsController < ApplicationController
     end
 
     def create_with_teacher_comment_service
-      TeacherCommentService.new(teacher_comment_params).create
-      @teacher_comment = TeacherComment.new
-      @teacher_comment.content = params[:content]
-      @teacher_comment.user_id = params[:user_id]
-      @teacher_comment.teacher_id = params[:teacher_id]
-
+      TeacherCommentService.new({ content:params[:content] , user_id:params[:user_id], teacher_id:params[:teacher_id]}).insert_comment
     end
 end

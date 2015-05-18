@@ -6,7 +6,7 @@ class TeacherCommentService
     @user_id = params[:user_id]
   end
 
-  def insert_teacher_comment
+  def insert_comment
     begin
       external_teacher_comment_service.create(teacher_comment_attributes)
     rescue
