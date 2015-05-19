@@ -10,6 +10,6 @@
   - @faculties.each do |faculty|
     %li
       %span= faculty.name
-      = link_to "Ver profesores",  faculty_teachers_path(:faculty_id => "#{faculty.id}") , {:class => "btn btn-default"}
-      = link_to "Ver cursos", faculty_courses_path(:faculty_id => "#{faculty.id}"), {:class=> "btn btn-default"}
+      = link_to "Ver profesores",  faculty_teachers_path(:faculty_id => "#{faculty.id}") , {:class => "btn btn-default show-teachers"}
+      = link_to "Ver cursos", faculty_courses_path(:faculty_id => "#{faculty.id}"), {:class=> "btn btn-default show-courses"}
 

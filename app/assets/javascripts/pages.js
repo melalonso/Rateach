@@ -1,6 +1,15 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+
+function back(){
+    //window.location.reload(history.go(-1));
+    document.write(document.referrer);
+    window.location.href = history.go(-1);//document.referrer;
+    location.reload();
+    history.go(0);
+}
+
 var ready = function() {
     $('.dropdown-toggle').dropdown();
 

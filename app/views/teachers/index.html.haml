@@ -10,6 +10,21 @@
       %blockquote
         %i Inicie sesi&oacute;n para evaluar.
 
+%table.table.table-hover{"ng-app" => "Rateach", "ng-controller" => "MainController"}
+  %thead
+    %tr
+      %th Nombre
+      %th Apellidos
+      %th Cantidad evaluaciones
+      %th Calificacion General
+      %th
 
-.teacher-list
-  = render "teachersTable"
+  %tbody{"ng-repeat" => "t in teachers"}
+    %tr{:id =>"{{t.id}}" }
+      %td {{t.name}}
+      %td {{t.last_name}}
+      %td {{t.eval_amount}}
+      %td {{t.eval_sum/t.eval_amount | number:2 }}
+      - url_escaped_href = teacher_path('{{ t.id}}')
+      - my_href = URI::unescape(url_escaped_href)
+      %td= link_to 'Ver Profesor', my_href, {class: "btn btn-default"}
