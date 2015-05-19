@@ -5,7 +5,7 @@
     %div.col-md-12
       %div.course-info
         %label.hidden#course-id= @course.id
-        %a.btn.btn-default.pull-right{onclick:"javascript:window.history.back();"} Ir atras
+        = link_to "Atras" , faculty_courses_path(:faculty_id=> @course.faculty_id) , {:class => "btn btn-default pull-right"}
         - if user_signed_in?
           %a.btn.btn-default.pull-right#comment-course{href:"#comment-section"} Dejar un comentario
           - if @course.evaluated
