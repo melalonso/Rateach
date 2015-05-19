@@ -5,7 +5,13 @@ class TeachersController < ApplicationController
   respond_to :json
 
   def index
-    @teachers = Faculty.find(params[:faculty_id]).teachers
+    teachers2 = Faculty.find(params[:faculty_id]).teachers
+    @teachers=[]
+    teachers2.each do |teacher|
+      if (teacher.state == "accepted")
+        @teachers.push(teacher)
+      end
+    end
     respond_with(@teachers)
   end
 
