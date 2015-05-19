@@ -66,11 +66,52 @@ var ready = function() {
                 async:false,
                 data:{state: actionType}
             }).done(function(data){
-                alert("success");
+                alert("Exitoso");
                 $("#"+courseID).parentsUntil( ".until-here ").remove();
             }).fail(function(){
-                alert("mal");
+                alert("Ocurrio algo malo");
             });
+    });
+
+
+    $("body").on('click',
+        'a.manage-teacher'
+        ,function(){
+            var actionType = $(this).attr("action");
+            var courseID = $(this).attr("value");
+            $.ajax({
+                method: "put",
+                url: "/teachers/"+courseID,
+                async:false,
+                data:{state: actionType}
+            }).done(function(data){
+                alert("Exitoso");
+                $("#"+courseID).parentsUntil( ".until-here ").remove();
+            }).fail(function(){
+                alert("Ocurrio algo malo");
+            });
+        });
+
+
+    // Search
+
+    $('#search-btn').click(function () {
+
+        var search_key = $("#search-bar").val();
+
+        if (search_key!=""){
+            $.ajax({
+                method: "get",
+                url: "/search/results",
+                data: { keywords: search_key },
+                async:false
+            }).done(function(data){
+                $("#results").html(data);
+            }).fail(function(){
+                alert("Algo no anda bien");
+            });
+        }
+
     });
 
 

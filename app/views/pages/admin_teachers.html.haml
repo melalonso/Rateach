@@ -7,15 +7,15 @@
             .panel-heading
               %input.hidden{:id => "#{teacher.id}"}
               %h4
-                Curso:
+                Profesor:
                 = teacher.name
             .row
               .col-md-6
-                %h5.teacher-info
+                %h5.admin-info
                   %b Universidad:
                   = teacher.university
               .col-md-6
-                %h5.teacher-info
+                %h5.admin-info
                   %b Escuela:
                   = teacher.faculty
 

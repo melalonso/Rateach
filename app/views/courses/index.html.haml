@@ -2,7 +2,7 @@
   .col-md-10
     %h1 Lista de Cursos
   .col-md-2
-    %a.btn.btn-default.pull-right{onclick:"javascript:window.history.back();"} Ir atras
+    = link_to "Atras" , university_faculties_path(:university_id=> @university.id) , {:class => "btn btn-default pull-right"}
 
 .row
   .col-md-6
