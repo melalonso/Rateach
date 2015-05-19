@@ -17,6 +17,7 @@ class CoursesController < ApplicationController
   end
 
   def new
+    @faculties = fac
     @course = Course.new
     respond_with(@course)
   end
@@ -27,7 +28,8 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.save
-    respond_with(@course)
+    redirect_to root_path
+    # respond_with(@course)
   end
 
   def update
@@ -42,10 +44,13 @@ class CoursesController < ApplicationController
 
   private
 
+  def course_params
+    params.require(:course).permit(:faculty_id,:eval_sum,:eval_amount,:name)
+  end
+
     def set_course
       @course = Course.find(params[:id])
     end
-
     def get_course_with_comments_service
       CourseService.new({
                         course_id: params[:id]

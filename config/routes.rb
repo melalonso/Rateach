@@ -30,7 +30,9 @@ Rails.application.routes.draw do
 
   end
 
-
+  get "/course/new" => "courses#new", :as => 'new_course'
+  get "/courses" => "courses#index", :as => 'courses'
+  post "/courses" => "courses#create"
   root 'home#index'
 
 end

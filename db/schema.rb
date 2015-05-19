@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20150518070135) do
     t.string   "name"
     t.float    "eval_sum",      limit: 24
     t.integer  "eval_amount"
+    t.string   "state",                    default: "pending"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 20150518070135) do
     t.string   "last_name"
     t.float    "eval_sum",      limit: 24, default: 0.0
     t.integer  "eval_amount",              default: 0
+    t.string   "state",                    default: "pending"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

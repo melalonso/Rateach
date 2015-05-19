@@ -7,6 +7,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :name , index: true
       t.float :eval_sum , index: true
       t.integer :eval_amount , index: true
+      t.string :state, default: 'pending'
 
       t.timestamps
 

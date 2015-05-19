@@ -7,6 +7,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :last_name
       t.float :eval_sum, default: 0.0
       t.integer :eval_amount, default: 0
+      t.string :state, default: 'pending'
       t.timestamps
       t.foreign_key (:universities)
       t.foreign_key (:faculties)
