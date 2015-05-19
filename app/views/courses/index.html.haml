@@ -10,7 +10,7 @@
       %blockquote
         %i Inicie sesi&oacute;n para evaluar.
 
-%table.table.table-hover
+%table.table.table-hover{"ng-app" => "Rateach", "ng-controller" => "MainController"}
   %thead
     %tr
       %th Nombre
@@ -18,8 +18,16 @@
       %th Cant eval
       %th Calificacion general
       %th
-  /%th
 
+  %tbody{"ng-repeat" => "c in courses"}
+    %tr{:id =>"{{c.id}}" }
+      %td {{c.name}}
+      %td {{c.eval_amount}}
+      %td {{c.eval_sum / c.eval_amount | number:2 }}
+      - url_escaped_href = course_path('{{ c.id}}')
+      - my_href = URI::unescape(url_escaped_href)
+      %td= link_to 'Ver Curso', my_href, {class: "btn btn-default"}
+-#
   %tbody
     - @courses.each do |course|
       %tr{id: "teacher_#{course.id}"}
@@ -30,10 +38,4 @@
           - total=0
         %td= number_with_precision(total, precision: 2)
         %td= link_to 'Ver Curso', course, {class: "btn btn-default"}
--#
-  %tbody{"ng-repeat" => "c in courses"}
-    %tr{:id =>"{{c.id}}" }
-      %td {{c.name}}
-      %td {{c.eval_amount}}
-      %td {{c.eval_sum / c.eval_amount}}
-      %td= link_to 'Ver Curso', course_path(:id =>"{{c.id}}" ), {class: "btn btn-default"}
+

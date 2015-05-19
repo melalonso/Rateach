@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+  respond_to :json
 
   def index
     @courses = Faculty.find(params[:faculty_id]).courses
