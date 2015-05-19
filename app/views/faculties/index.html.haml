@@ -3,7 +3,7 @@
   .col-md-10
     %h1 Lista de escuelas
   .col-md-2
-    %a.btn.btn-default.pull-right{onclick:"javascript:window.history.back();"} Ir atras
+    = link_to "Atras" , root_path , {:class => "btn btn-default pull-right"}
 
 %label#uid.hidden= params[:university_id]
 %ul.faculties

@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get "/admin" => "pages#admin", :as => "admin_courses_teachers"
   get "/admin/courses" => "pages#admin_courses", :as => "admin_courses"
   get "/admin/teachers" => "pages#admin_teachers", :as => "admin_teachers"
+  get "/search" => "pages#search", :as => "search"
+  get "/search/results" => "pages#search_results"
   root 'pages#index'
 
 end

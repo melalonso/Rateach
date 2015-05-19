@@ -25,4 +25,24 @@ class PagesController < ApplicationController
     render :layout => false
   end
 
+  def search
+
+  end
+
+  def search_results
+    keywords = params[:keywords]
+    if keywords!=nil
+      where_clause = "( name LIKE ? )"
+      @courses = Course.where(where_clause, '%'+keywords+'%').where(:state => "accepted")
+      where_clause = "( name LIKE ? OR last_name LIKE ?)"
+      @teachers = Teacher.where(where_clause, '%'+keywords+'%','%'+keywords+'%').where(:state => "accepted")
+    end
+
+    render :layout => false
+
+  end
+
+
+
+
 end

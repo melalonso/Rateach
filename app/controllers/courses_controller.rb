@@ -5,8 +5,10 @@ class CoursesController < ApplicationController
   respond_to :json
 
   def index
-    courses2 = Faculty.find(params[:faculty_id]).courses
-    @courses=[];
+    faculty = Faculty.find(params[:faculty_id])
+    courses2 = faculty.courses
+    @university = University.find(faculty.university_id)
+    @courses=[]
     courses2.each do |course|
       if (course.state == "accepted")
         @courses.push(course)

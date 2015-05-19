@@ -42,37 +42,41 @@
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             - if user_signed_in?
+              %li
+                %a
+                  %i.fa.fa-lg.fa-user{:title => "Perfil"}
+                  =current_user.name
+
               - if (current_user.manager == true)
-                %li
-                  %a
-                    %i.fa.fa-lg.fa-user{:title => "Perfil"}
-                    =current_user.name
+
                 %li
                   %a{:href=>admin_courses_teachers_path}
                     %i.fa.fa-lg.fa-tasks{:title => "Administrar"}
                     Administrar
-                %li
-                  =link_to destroy_user_session_path, method: :delete do
-                    %i.fa.fa-power-off.fa-lg{:title => "Salir"}
-                    Salir
-              -else
-                %li
-                  %a
-                    %i.fa.fa-lg.fa-user{:title => "Perfil"}
-                    =current_user.name
+
               %li
                 = link_to new_teacher_path do
                   %i.fa.fa-pencil.fa-lg{:title => "Agregar Profesor"}
                   Profesor
-                %li
 
-                  = link_to new_course_path do
-                    %i.fa.fa-pencil.fa-lg{:title => "Agregar Curso"}
-                    Curso
-                %li
-                  =link_to destroy_user_session_path, method: :delete do
-                    %i.fa.fa-power-off.fa-lg{:title => "Salir"}
-                    Salir
+              %li
+
+                = link_to new_course_path do
+                  %i.fa.fa-pencil.fa-lg{:title => "Agregar Curso"}
+                  Curso
+
+              %li
+                =link_to search_path do
+                  %i.fa.fa-search.fa-lg{:title => "Buscar"}
+                  Buscar
+
+              %li
+                =link_to destroy_user_session_path, method: :delete do
+                  %i.fa.fa-power-off.fa-lg{:title => "Salir"}
+                  Salir
+
+
+
             - else
               %li
                 = link_to new_user_session_path do

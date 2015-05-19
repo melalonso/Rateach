@@ -5,7 +5,7 @@
 "Utiliza una metodología adecuada según los contenidos. (Clases presenciales, exposiciones, laboratorios u otros recursos)."]
 
 
-.modal-dialog.modal-lg
+.modal-dialog.modal-md
   .modal-content
     .modal-header
       %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
@@ -14,9 +14,9 @@
       %small Siguiendo la rubica evalue al curso seleccionando un numero para cada rubro a evaluar
     .modal-body
       %div.row
-        %div.teacher-evaluation
+        %div.course-evaluation
           - 5.times do |x|
-            %div.col-md-12
+            %div.col-md-12.rubric
               %form{id: "rubric#{x+1}"}
                 %span.course-rubrics #{x+1}. #{rubrics[x]}
                 %br/

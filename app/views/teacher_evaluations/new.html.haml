@@ -9,7 +9,7 @@
             "Es puntual.",
             "Fomenta un clima de respeto"]
 
-.modal-dialog.modal-lg
+.modal-dialog.modal-md
   .modal-content
     .modal-header
       %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
@@ -20,7 +20,7 @@
       %div.row
         %div.teacher-evaluation
           - 10.times do |x|
-            %div.col-md-12
+            %div.col-md-12.rubric
               %form{id: "rubric#{x+1}"}
                 %span.teacher-rubrics #{x+1}. #{rubrics[x]}
                 %br/
