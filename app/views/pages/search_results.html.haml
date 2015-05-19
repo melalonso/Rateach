@@ -1,0 +1,46 @@
+%h5
+  %b Cursos
+.well
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Nombre
+        %th Cantidad evaluaciones
+        %th Calificacion general
+        %th
+    %tbody
+      - @courses.each do |course|
+        %tr{id: "course_#{course.id}"}
+          %td= course.name
+          %td= course.eval_amount
+          - total = course.eval_sum / course.eval_amount
+          - if course.eval_amount == 0
+            - total=0
+          %td= number_with_precision(total, precision: 2)
+          %td= link_to 'Ver Curso', course, {class: "btn btn-default"}
+
+
+%h5
+  %b Profesores
+.well
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Nombre
+        %th Apellidos
+        %th Cantidad evaluaciones
+        %th Calificacion General
+        %th
+
+    %tbody
+      - @teachers.each do |t|
+        %tr{:id =>"teacher_#{t.id}" }
+          %td= t.name
+          %td= t.last_name
+          %td= t.eval_amount
+
+          - total = t.eval_sum / t.eval_amount
+          - if t.eval_amount == 0
+            - total=0
+          %td= number_with_precision(total, precision: 2)
+          %td= link_to 'Ver Profesor', t, {class: "btn btn-default"}
