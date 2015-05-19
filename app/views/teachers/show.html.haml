@@ -1,4 +1,5 @@
 //%p#notice= notice
+
 .modal.fade.bs-example-modal-lg#evaluationModal{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1"}
   %button#submit-comment.btn.btn-sm.btn-default.pull-right Comentar
 %div.row
@@ -22,22 +23,33 @@
   -#
     %script{src: '/assets/teachers.js'}
 
-%div.row
-  %div.container
+%div.container
+  %div.row
     %div.col-md-12
       %div.teacher-comments
         %h2 Comentarios para #{@teacher.name}
-        %ul#teacher-comment-list
-          - @teacher.teacher_comments.each do |comment|
-            %li.comment-element
-              %span #{comment.user_name} #{comment.created_at.strftime('%d %b %Y %I:%M %p') }
-              %p #{comment.content}
-        - if user_signed_in?
-          %label.hidden#user-id= current_user.id
-          %label.hidden#user-name= current_user.name
-          %div.row.make-comment
-            %div.col-md-6
-              %label#comment-section Escribir un comentario
-              %br
-              %textarea#comment-area{rows: 8,cols:64}
-              %button.btn.btn-primary.pull-right#do-comment Comentar
+
+    /%ul#teacher-comment-list
+    %div.teacher-comments#teacher-comment-list
+      - @teacher.teacher_comments.each do |comment|
+        %div.col-md-8
+          %div.panel.panel-default
+            %div.panel-heading
+              - if current_user.manager
+                %i.fa-times.fa.pull-right.delete-comment{id: "#{comment.id}"}
+              %strong
+                #{comment.user_name}
+              %span{class:'text-muted'}
+                #{comment.created_at.strftime('%d %b %Y %I:%M %p')}
+            %div.panel-body
+              #{comment.content}
+    - if user_signed_in?
+      %label.hidden#user-id= current_user.id
+      %label.hidden#user-name= current_user.name
+      %label.hidden#user-manager= current_user.manager
+      %div.col-md-6.make-comment
+        %label#comment-section Escribir un comentario
+        %br/
+        %textarea.form-control#comment-area{rows: 8,cols:64}
+        %br/
+        %button.btn.btn-primary.pull-right#do-comment Comentar

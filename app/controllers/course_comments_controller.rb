@@ -22,7 +22,7 @@ class CourseCommentsController < ApplicationController
 
   def create
     @course_comments = create_with_course_comment_service
-    render text: @course_comments.created_at.strftime('%d %b %Y %I:%M %p')
+    render json: {id: @course_comments.id,date: @course_comments.created_at.strftime('%d %b %Y %I:%M %p')}
   end
 
   def update
@@ -32,7 +32,7 @@ class CourseCommentsController < ApplicationController
 
   def destroy
     @course_comment.destroy
-    respond_with(@course_comment)
+    render json: @course_comment
   end
 
   private
