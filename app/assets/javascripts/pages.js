@@ -13,29 +13,66 @@ function back(){
 var ready = function() {
     $('.dropdown-toggle').dropdown();
 
-    $('.faculty-option').click(function (e) {
-        var fac_id = $(this).attr("id");
-        var uni_id = $("#uni-id").html();
-        filterByFaculty(uni_id,fac_id);
+    $('#manage-teachers').click(function () {
+        var id = $(this).attr("href");
+
+        $.ajax({
+            method: "get",
+            url: "/admin/teachers",
+            async:false,
+            data:{}
+        }).done(function(data){
+            $(id).html(data);
+        });
+    });
+
+    $('#manage-courses').click(function () {
+
+        var id = $(this).attr("href");
+
+        $.ajax({
+            method: "get",
+            url: "/admin/courses",
+            async:false,
+            data:{}
+        }).done(function(data){
+            $(id).html(data);
+        });
+    });
+
+    $('#manage-teachers').click(function () {
+
+        var id = $(this).attr("href");
+
+        $.ajax({
+            method: "get",
+            url: "/admin/teachers",
+            async:false,
+            data:{}
+        }).done(function(data){
+            $(id).html(data);
+        });
     });
 
 
-    function filterByFaculty(uni_id,fac_id){
-        alert("tengo facultad: "+fac_id+" y uni: "+uni_id);
-        $.ajax({
-            method: "get",
-            url: "/faculties/"+fac_id+"/teachers",
-            async:false,
-            data : { university_id : uni_id }
-        }).done(function(data){
-            alert(data);
-            $(".teacher-list").html(data);
-            $("#test").val("sdsdsd");
-        }).fail(function(jqXHR, textStatus){
-            alert("Ups accion no disponible.");
-        });
+    $("body").on('click',
+        'a.manage-course'
+        ,function(){
+            var actionType = $(this).attr("action");
+            var courseID = $(this).attr("value");
+            $.ajax({
+                method: "put",
+                url: "/courses/"+courseID,
+                async:false,
+                data:{state: actionType}
+            }).done(function(data){
+                alert("success");
+                $("#"+courseID).parentsUntil( ".until-here ").remove();
+            }).fail(function(){
+                alert("mal");
+            });
+    });
 
-    }
 
 }
 

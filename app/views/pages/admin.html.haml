@@ -1,0 +1,13 @@
+#rootwizard
+  %ul
+    %li
+      %a{"data-toggle" => "tab", :href => "#tab1", :id =>"manage-teachers"} Administrar Profesores Pendientes
+    %li
+      %a{"data-toggle" => "tab", :href => "#tab2", :id =>"manage-courses"} Administrar Cursos Pendientes
+
+  .tab-content
+    #tab1.tab-pane
+    #tab2.tab-pane
+
+%script
+  $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-pills'});

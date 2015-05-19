@@ -27,12 +27,14 @@ Rails.application.routes.draw do
         resources :course_comments
       end
     end
-
   end
 
   get "/course/new" => "courses#new", :as => 'new_course'
   get "/courses" => "courses#index", :as => 'courses'
   post "/courses" => "courses#create"
-  root 'home#index'
+  get "/admin" => "pages#admin", :as => "admin_courses_teachers"
+  get "/admin/courses" => "pages#admin_courses", :as => "admin_courses"
+  get "/admin/teachers" => "pages#admin_teachers", :as => "admin_teachers"
+  root 'pages#index'
 
 end
