@@ -35,9 +35,11 @@ class TeachersController < ApplicationController
 
   def create
     @teacher = Teacher.new(teacher_params)
-    @teacher.university_id = params[:uid]
+    @teacher.eval_amount = 0
+    @teacher.eval_sum = 0.0
     @teacher.save
-    respond_with(@teacher)
+    redirect_to root_path
+    #respond_with(@teacher)
   end
 
   def update
@@ -67,7 +69,7 @@ class TeachersController < ApplicationController
     end
 
     def teacher_params
-      params.require(:teacher).permit(:name, :last_name, :eval_amount, :eval_sum)
+      params.require(:teacher).permit(:name, :last_name, :eval_amount, :eval_sum, :university_id, :faculty_id)
     end
 
     def filter_if_faculty_service

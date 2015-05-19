@@ -1,5 +1,29 @@
-%h1 New teacher
+%div.row
+  %div.container
+    %div.col-md-8.col-md-offset-2
+      %h1 Agregar Profesor
+      %span Su solicitud debe ser aceptada por un Administrador
+      %br/
+    %div.col-md-8.col-md-offset-2
+      %label Nombre
+      %input.form-control#teacher-name{type: 'text'}
 
-= render 'form'
+      %label Apellido(s)
+      %input.form-control#teacher-last-name{type: 'text'}
 
-= link_to 'Back', teachers_path
+      %br/
+      %label Universidad
+      %select.form-control#select-university{title:"Seleccione Universidad"}
+
+      %br/
+      %label Escuela a la que pertenece
+      %select.form-control.disabled#select-faculty{title:"Seleccione Escuela"}
+        %option{value: 0} Seleccione una Escuela
+
+
+      %br/
+      %button.btn.btn-default#add-teacher Agregar Profesor
+      = link_to 'Cancelar' ,root_path, class:'btn btn-default'
+
+
+
