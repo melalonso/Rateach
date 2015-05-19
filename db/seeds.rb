@@ -68,11 +68,11 @@ faculty = Faculty.create([
                          ])
 
 teachers = Teacher.create([
-    {id:1, university_id:1, faculty_id:1, name: 'Diego', last_name:'Munguia', eval_sum:0.0, eval_amount:0},
-    {id:2, university_id:2, faculty_id:2, name: 'Diego', last_name:'Munguia', eval_sum:0.0, eval_amount:0},
-    {id:3, university_id:1, faculty_id:1, name: 'Carlos', last_name:'Arias', eval_sum:0.0, eval_amount:0},
-    {id:4, university_id:1, faculty_id:1, name: 'Daniel', last_name:'Montero', eval_sum:0.0, eval_amount:0},
-    {id:5, university_id:1, faculty_id:1, name: 'Bjarne', last_name:'Stroustrup', eval_sum:0.0, eval_amount:0},
+    {id:1, university_id:1, faculty_id:1, name: 'Diego', last_name:'Munguia', eval_sum:0.0, eval_amount:0, state:'pending'},
+    {id:2, university_id:2, faculty_id:2, name: 'Diego', last_name:'Munguia', eval_sum:0.0, eval_amount:0, state:'accepted'},
+    {id:3, university_id:1, faculty_id:1, name: 'Carlos', last_name:'Arias', eval_sum:0.0, eval_amount:0,state:'accepted'},
+    {id:4, university_id:1, faculty_id:1, name: 'Daniel', last_name:'Montero', eval_sum:0.0, eval_amount:0,state:'accepted'},
+    {id:5, university_id:1, faculty_id:1, name: 'Bjarne', last_name:'Stroustrup', eval_sum:0.0, eval_amount:0, state:'accepted'}
                           ])
 
 careers = Career.create ([
@@ -81,13 +81,13 @@ careers = Career.create ([
                         ])
 
 courses = Course.create([
-                            {id:1, university_id:1, faculty_id:1, career_id:2, name:'Ingles_I_para_Computacion', eval_sum:0.0, eval_amount:0},
-                            {id:2, university_id:2, faculty_id:2, career_id:1, name: 'Comunicacion_Tecnica', eval_sum:0.0, eval_amount:0},
-                            {id:3, university_id:1, faculty_id:1, career_id:1, name: 'Fundamentos_de_Organizacion_de_Computadoras', eval_sum:0.0, eval_amount:0},
-                            {id:4, university_id:1, faculty_id:1, career_id:1, name: 'Introduccion_a_la_Programacion', eval_sum:0.0, eval_amount:0},
-                            {id:5, university_id:1, faculty_id:1, career_id:1, name: 'Taller_de_Programacion', eval_sum:0.0, eval_amount:0},
-                            {id:6, university_id:1, faculty_id:1, career_id:1, name: 'Matematica_Discreta', eval_sum:0.0, eval_amount:0},
-                            {id:7, university_id:1, faculty_id:1, career_id:1, name: 'Actividad_Cultural_I', eval_sum:0.0, eval_amount:0}
+                            {id:1, university_id:1, faculty_id:1, career_id:2, name:'Ingles_I_para_Computacion', eval_sum:0.0, eval_amount:0,state: 'accepted'},
+                            {id:2, university_id:2, faculty_id:2, career_id:1, name: 'Comunicacion_Tecnica', eval_sum:0.0, eval_amount:0,state: 'pending'},
+                            {id:3, university_id:1, faculty_id:1, career_id:1, name: 'Fundamentos_de_Organizacion_de_Computadoras', eval_sum:0.0, eval_amount:0,state: 'accepted'},
+                            {id:4, university_id:1, faculty_id:1, career_id:1, name: 'Introduccion_a_la_Programacion', eval_sum:0.0, eval_amount:0,state: 'accepted'},
+                            {id:5, university_id:1, faculty_id:1, career_id:1, name: 'Taller_de_Programacion', eval_sum:0.0, eval_amount:0,state: 'accepted'},
+                            {id:6, university_id:1, faculty_id:1, career_id:1, name: 'Matematica_Discreta', eval_sum:0.0, eval_amount:0,state: 'accepted'},
+                            {id:7, university_id:1, faculty_id:1, career_id:1, name: 'Actividad_Cultural_I', eval_sum:0.0, eval_amount:0,state: 'accepted'}
                         ])
 TeacherComment.create([
                           {id:1, user_id:1, teacher_id:1, content: "Es un excelente profesor"},
