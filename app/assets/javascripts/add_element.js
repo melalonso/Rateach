@@ -56,6 +56,32 @@ var ready = function(){
         });
         //alert(name+"  "+lastName);
     });
+
+
+    $('#add-course').click(function(){
+        var uid = $( "#select-university option:selected" ).attr('value');
+        var fid = $( "#select-faculty option:selected" ).attr('value');
+        var name = $('#teacher-name').val();
+        if (uid==0 || fid==0 || checkField(name)){
+            alert('Los datos ingresados no son correctos por favor reviselos e intentelo de nuevo.');
+            return;
+        }
+        $.ajax({
+            method: 'post',
+            url: '/courses',
+            data: {
+                course:
+                {university_id: uid, faculty_id: fid,
+                    name: name
+                }
+            }
+
+        }).done(function(response){
+            console.log('success');
+            window.location = '/';
+        });
+        //alert(name+"  "+lastName);
+    });
 };
 $(document).on('page:load', ready);
 $(document).ready(ready);

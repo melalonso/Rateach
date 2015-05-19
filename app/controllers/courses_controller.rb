@@ -24,7 +24,6 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @faculties = fac
     @course = Course.new
     respond_with(@course)
   end
@@ -34,6 +33,8 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+    @course.eval_sum = 0.0
+    @course.eval_amount = 0
     @course.save
     redirect_to root_path
     # respond_with(@course)
@@ -60,7 +61,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:faculty_id,:eval_sum,:eval_amount,:name)
+    params.require(:course).permit(:university_id,:faculty_id,:eval_sum,:eval_amount,:name)
   end
 
     def set_course
