@@ -25,17 +25,27 @@
     %div.col-md-12
       %div.course-comments
         %h2 Comentarios para el curso
-        %ul#course-comment-list
-          - @course.course_comments.each do |comment|
-            %li.comment-element
-              %span #{comment.user_name} #{comment.created_at.strftime('%d %b %Y %I:%M %p') }
-              %p #{comment.content}
-        - if user_signed_in?
-          %label.hidden#user-id-course= current_user.id
-          %label.hidden#user-name= current_user.name
-          %div.row.make-comment
-            %div.col-md-6
-              %label#comment-section Escribir un comentario
-              %br
-              %textarea#comment-area-course{rows: 8,cols:64}
-              %button.btn.btn-primary.pull-right#do-comment-course Comentar
+    /%ul#course-comment-list
+    %div.course-comments#course-comment-list
+      - @course.course_comments.each do |comment|
+        %div.col-md-8
+          %div.panel.panel-default
+            %div.panel-heading
+              - if current_user.manager
+                %i.fa-times.fa.pull-right.delete-comment-course{id: "#{comment.id}"}
+              %strong
+                #{comment.user_name}
+              %span{class:'text-muted'}
+                #{comment.created_at.strftime('%d %b %Y %I:%M %p')}
+            %div.panel-body
+              #{comment.content}
+    - if user_signed_in?
+      %label.hidden#user-id= current_user.id
+      %label.hidden#user-name= current_user.name
+      %label.hidden#user-manager= current_user.manager
+      %div.col-md-6.make-comment
+        %label#comment-section Escribir un comentario
+        %br/
+        %textarea.form-control#comment-area{rows: 8,cols:64}
+        %br/
+        %button.btn.btn-primary.pull-right#do-comment-course Comentar

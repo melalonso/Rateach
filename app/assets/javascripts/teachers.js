@@ -27,7 +27,22 @@ var ready = function() {
                 data: {user_id: uid,content: com},
                 async: false
             }).done(function(response){
-                $('#teacher-comment-list').append('<li class=\'comment-element\'><p><span>'+username+' </span>'+response+'</p>'+com+'</li>');
+                console.log(response);
+                var html = "<div class=\"col-md-8\">"+
+                    "<div class=\"panel panel-default\">"+
+                    "<div class=\"panel-heading\">"+
+                    "<strong>"+username+"</strong> <span class=\"text-muted\">"+response.date+"</span>";
+
+                    if ($('#user-manager').html()=='true'){
+                        html+= "<i class=\"fa-times fa pull-right delete-comment\" id=\""+response.id+"\"></i>";
+                    }
+                    html += "</div>"+
+                    "<div class=\"panel-body\"><p>"+com+
+                    "<p></div>"+
+                    "</div>"+
+                    "</div>"+
+                    "</div>";
+                $('#teacher-comment-list').append(html);
                 $('#comment-area').val('');
             }).fail(function(jqXHR, textStatus){
                 alert("Ups accion no disponible.");
@@ -49,7 +64,19 @@ var ready = function() {
         });
     });
 
-}
+    $('body').on('click','.delete-comment',function(){
+        var id = $(this).attr('id');
+        var urlString = '/teacher_comments/'+id;
+        var $element = $(this);
+        $.ajax({
+            type: 'DELETE',
+            url: urlString
+        }).done(function(response){
+            console.log(response);
+            $element.parentsUntil( ".teacher-comments ").remove();
+        });
+    });
+};
 
 
 $(document).on('page:load', ready);

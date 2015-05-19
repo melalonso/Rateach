@@ -1,5 +1,5 @@
 class TeacherCommentsController < ApplicationController
-  before_action :set_teacher_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_teacher_comment, only: [:show, :edit, :update]
 
   respond_to :html
 
@@ -22,7 +22,7 @@ class TeacherCommentsController < ApplicationController
 
   def create
     @teacher_comment = create_with_teacher_comment_service
-    render text: @teacher_comment.created_at.strftime('%d %b %Y %I:%M %p')
+    render json: {id: @teacher_comment.id,date: @teacher_comment.created_at.strftime('%d %b %Y %I:%M %p')}
   end
 
   def update
@@ -31,20 +31,27 @@ class TeacherCommentsController < ApplicationController
   end
 
   def destroy
+    @teacher_comment = TeacherComment.find(params[:id])
     @teacher_comment.destroy
-    respond_with(@teacher_comment)
+    render json: @teacher_comment
   end
 
   private
-    def set_teacher_comment
+
+  def set_teacher_comment
+    begin
       @teacher_comment = TeacherComment.find(params[:teacher_id])
+    rescue
+      @teacher_comment = TeacherComment.find(params[:id])
     end
 
-    def teacher_comment_params
-      params.require(:teacher_comment).permit(:teacher_id,:user_id,:content)
-    end
+  end
 
-    def create_with_teacher_comment_service
-      TeacherCommentService.new({ content:params[:content] , user_id:params[:user_id], teacher_id:params[:teacher_id]}).insert_comment
-    end
+  def teacher_comment_params
+    params.require(:teacher_comment).permit(:teacher_id,:user_id,:content,:id)
+  end
+
+  def create_with_teacher_comment_service
+    TeacherCommentService.new({ content:params[:content] , user_id:params[:user_id], teacher_id:params[:teacher_id]}).insert_comment
+  end
 end
