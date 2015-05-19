@@ -5,7 +5,13 @@ class CoursesController < ApplicationController
   respond_to :json
 
   def index
-    @courses = Faculty.find(params[:faculty_id]).courses
+    courses2 = Faculty.find(params[:faculty_id]).courses
+    @courses=[];
+    courses2.each do |course|
+      if (course.state == "accepted")
+        @courses.push(course)
+      end
+    end
     respond_with(@courses)
   end
 
@@ -33,10 +39,18 @@ class CoursesController < ApplicationController
     # respond_with(@course)
   end
 
+
   def update
-    @course.update(course_params)
-    respond_with(@course)
+    @course = Course.find(params[:id])
+    if (params[:state]!="accepted")
+      @course.destroy
+    else
+      @course.state = "accepted"
+      @course.save
+    end
+    render text: "Succesful"
   end
+
 
   def destroy
     @course.destroy

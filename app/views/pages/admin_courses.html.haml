@@ -1,0 +1,28 @@
+%ul.administrate
+  - @courses.each do |course|
+    %li.until-here
+      %div.row.container
+        %div.col-md-8
+          .panel.panel-default
+            .panel-heading
+              %input.hidden{:id => "#{course.id}"}
+              %h4
+                Curso:
+                = course.name
+            .row
+              .col-md-6
+                %h5.course-info
+                  %b Universidad:
+                  = course.university
+              .col-md-6
+                %h5.course-info
+                  %b Escuela:
+                  = course.faculty
+
+            %ul.manage-post-buttons
+              %li
+                %a.manage-course{:value => "#{course.id}",:action => "rejected"}
+                  %i.fa.fa-times.fa-2x
+              %li
+                %a.manage-course{:value => "#{course.id}",:action => "accepted"}
+                  %i.fa.fa-check.fa-2x

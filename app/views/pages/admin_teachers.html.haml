@@ -1,0 +1,28 @@
+%ul.administrate
+  - @teachers.each do |teacher|
+    %li.until-here
+      %div.row.container
+        %div.col-md-8
+          .panel.panel-default
+            .panel-heading
+              %input.hidden{:id => "#{teacher.id}"}
+              %h4
+                Curso:
+                = teacher.name
+            .row
+              .col-md-6
+                %h5.teacher-info
+                  %b Universidad:
+                  = teacher.university
+              .col-md-6
+                %h5.teacher-info
+                  %b Escuela:
+                  = teacher.faculty
+
+            %ul.manage-post-buttons
+              %li
+                %a.manage-teacher{:value => "#{teacher.id}",:action => "rejected"}
+                  %i.fa.fa-times.fa-2x
+              %li
+                %a.manage-teacher{:value => "#{teacher.id}",:action => "accepted"}
+                  %i.fa.fa-check.fa-2x

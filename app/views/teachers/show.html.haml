@@ -7,7 +7,7 @@
       %div.teacher-info
         %label.hidden#teacher-id= @teacher.id
         /=link_to "Ir atras",faculties_path
-        %a.btn.btn-default.pull-right{onclick:"javascript:back(); "} Ir atras
+        = link_to "Atras" , faculty_teachers_path(:faculty_id=> @teacher.faculty_id) , {:class => "btn btn-default pull-right"}
         - if user_signed_in?
           %a.btn.btn-default.pull-right#comment-teacher{href:"#comment-section"} Dejar un comentario
           - if @teacher.evaluated
